@@ -42,6 +42,7 @@ jspm_packages
 
 # tests
 testreports
+.sonar
 
 #OS
 .DS_Store

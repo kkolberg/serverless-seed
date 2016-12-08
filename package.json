@@ -4,11 +4,11 @@
   "description": "Sample project",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --recursive --reporter spec test",
-    "jenkins": "mocha --recursive --reporter mocha-junit-reporter --reporter-options mochaFile=./testreports/tests-results-jenkins.xml test",
-    "sonar": "mocha --recursive --reporter mocha-sonar-reporter --reporter-options mochaFile=./testreports/tests-results-sonar.xml test",
-    "test-debug": "mocha --recursive --debug-brk --reporter spec test",
-    "cover": "istanbul cover --include-all-sources true _mocha -- --recursive test"
+    "test": "mocha --recursive --reporter spec tests",
+    "jenkins": "mocha --recursive --reporter mocha-junit-reporter --reporter-options mochaFile=./testreports/tests-results-jenkins.xml tests",
+    "sonar": "mocha --recursive --reporter mocha-sonar-reporter --reporter-options mochaFile=./testreports/tests-results-sonar.xml tests",
+    "test-debug": "mocha --recursive --debug-brk --reporter spec tests",
+    "cover": "istanbul cover --include-all-sources true _mocha -- --recursive tests"
   },
   "config": {
     "mocha-sonar-reporter": {
@@ -28,10 +28,15 @@
   },
   "homepage": "https://github.com/kkolberg/serverless-seed#readme",
   "devDependencies": {
+    "@types/chai": "^3.4.34",
+    "@types/mocha": "^2.2.33",
+    "@types/node": "0.0.2",
     "chai": "^3.5.0",
+    "istanbul": "^0.4.5",
     "mocha": "^3.2.0",
     "mocha-junit-reporter": "^1.12.1",
     "mocha-sonar-reporter": "^0.1.6",
-    "serverless-offline": "^3.5.7"
+    "serverless-offline": "^3.5.7",
+    "typescript": "^2.1.4"
   }
 }
