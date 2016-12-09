@@ -16,6 +16,11 @@ package:
     - node_modules/@types/**
     - testresults
     - build/tests/**
+    - src/**
+    - sonar-project.properties
+    - versioning.js
+    - tsconfig.json
+    - /**/*.js.map
 
 
   

@@ -1,6 +1,6 @@
 import path = require("path");
-//require("app-module-path").addPath((process.env.LAMBDA_RUNTIME_DIR ? process.env.LAMBDA_RUNTIME_DIR : ".") + path.sep + "build");
 require("app-module-path").addPath("." + path.sep + "build");
+
 import {Blah} from 'src/lib/Blah'
 export function pets(event: any, context: any, callback: any) {
   const response = {
