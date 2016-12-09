@@ -20,7 +20,7 @@ package:
     - sonar-project.properties
     - versioning.js
     - tsconfig.json
-    - /**/*.js.map
+    - build/**/*.js.map
 
 
   
