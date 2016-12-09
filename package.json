@@ -4,11 +4,16 @@
   "description": "Sample project",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --recursive --reporter spec build/tests",
-    "jenkins": "mocha --recursive --reporter mocha-junit-reporter --reporter-options mochaFile=./testreports/tests-results-jenkins.xml tests",
-    "sonar": "mocha --recursive --reporter mocha-sonar-reporter --reporter-options mochaFile=./testreports/tests-results-sonar.xml tests",
-    "test-debug": "mocha --recursive --debug-brk --reporter spec tests",
-    "cover": "istanbul cover --include-all-sources true _mocha -- --recursive tests"
+    "pretest": "rm -r build && tsc",
+    "prestart":"rm -r build && tsc",
+    "start": "node --debug `which serverless` offline start",
+    "predeploy":"rm -r build && tsc && npm prune --production",
+    "deploy": "sls deploy",
+    "test": "mocha --recursive --require build/tests/index.js --reporter spec build/tests",
+    "jenkins": "mocha --recursive --require build/tests/index.js --reporter mocha-junit-reporter --reporter-options mochaFile=./testreports/tests-results-jenkins.xml tests",
+    "sonar": "mocha --recursive --require build/tests/index.js --reporter mocha-sonar-reporter --reporter-options mochaFile=./testreports/tests-results-sonar.xml tests",
+    "test-debug": "mocha --recursive --require build/tests/index.js --debug-brk --reporter spec tests",
+    "cover": "istanbul cover --include-all-sources true _mocha -- --recursive tests -- --require build/tests/index.js"
   },
   "config": {
     "mocha-sonar-reporter": {
