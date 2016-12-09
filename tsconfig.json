@@ -3,8 +3,12 @@
         "module": "commonjs",
         "target": "es5",
         "noImplicitAny": true,
+        "removeComments": true,
         "sourceMap": true,
         "declaration": false,
+        "rootDir": "functions",
+        "outDir": "./build",
+       // "outFile": "./src.js",
         "typeRoots": [
             "./node_modules/@types"
         ]
