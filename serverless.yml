@@ -3,6 +3,8 @@ service: petshop
 provider:
   name: aws
   runtime: nodejs4.3
+  environment:
+    IS_SERVERLESS: true
 
 package:
   exclude:
@@ -13,10 +15,13 @@ package:
     - functions/**
     - node_modules/@types/**
     - testresults
+    - build/tests/**
 
+
+  
 functions:
   pets:
-    handler: build/functions/pets/handler.pets
+    handler: build/src/functions/pets/handler.pets
     events:
       - http:
           path: users/create
