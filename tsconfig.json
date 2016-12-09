@@ -6,9 +6,8 @@
         "removeComments": true,
         "sourceMap": true,
         "declaration": false,
-        "rootDir": "functions",
+        "rootDir": "src",
         "outDir": "./build",
-       // "outFile": "./src.js",
         "typeRoots": [
             "./node_modules/@types"
         ]
