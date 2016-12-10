@@ -11,15 +11,15 @@
     "predeploy": "npm run clean tsc && npm prune --production",
     "deploy": "sls deploy",
     "pretest": "npm run clean && tsc",
-    "test": "mocha --recursive --require tests/index.ts --compilers ts:ts-node/register tests",
+    "test": "mocha --recursive  --require test/index.ts --compilers ts:ts-node/register",
     "prejenkins": "npm run clean",
     "jenkins": "mocha --recursive --require build/tests/index.js --reporter mocha-junit-reporter --reporter-options mochaFile=./testreports/tests-results-jenkins.xml build/tests",
     "presonar": "npm run clean && tsc",
     "sonar": "mocha --recursive --require build/tests/index.js --reporter mocha-sonar-reporter --reporter-options mochaFile=./testreports/tests-results-sonar.xml build/tests",
     "predebugTest": "npm run clean",
     "debugTest": "mocha --recursive --require tests/index.ts --compilers ts:ts-node/register --debug-brk tests",
-    "precover": "npm run clean",
-    "cover": "nyc report --all --reporter=text-summary --reporter=lcov --reporter=json --reporter=html npm test"
+    "precover": "npm run clean && tsc",
+    "cover": "nyc --include src/* report --reporter=text-summary --reporter=lcov --reporter=json --reporter=html npm test"
   },
   "config": {
     "mocha-sonar-reporter": {
@@ -28,15 +28,6 @@
       "outputfile": "testreports/tests-results.xml"
     },
     "nyc": {
-      "include": [
-        "src/*.ts",
-        "src/**/*.ts"
-      ],
-      "exclude": [
-        "typings",
-        "**/*.js",
-        "**/*.spec.ts"
-      ],
       "extension": [
         ".ts"
       ],
