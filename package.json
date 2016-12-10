@@ -4,28 +4,52 @@
   "description": "Sample project",
   "main": "index.js",
   "scripts": {
-    "clean":"rm -rf build && rm -rf coverage && rm -rf testreports && rm -rf .serverless && rm -rf .sonar",
-    "installglobals": "npm install -g serverless istanbul mocha typescript remap-istanbul",
+    "clean": "rm -rf build && rm -rf coverage && rm -rf testreports && rm -rf .serverless && rm -rf .sonar",
+    "installglobals": "npm install -g serverless mocha typescript nyc",
     "prestart": "npm run clean && tsc",
     "start": "node --debug `which serverless` offline start",
     "predeploy": "npm run clean tsc && npm prune --production",
     "deploy": "sls deploy",
-    "test": "mocha --recursive --require build/tests/index.js --reporter spec build/tests",
-    "prejenkins": "npm run clean && tsc",
+    "pretest": "npm run clean && tsc",
+    "test": "mocha --recursive --require tests/index.ts --compilers ts:ts-node/register tests",
+    "prejenkins": "npm run clean",
     "jenkins": "mocha --recursive --require build/tests/index.js --reporter mocha-junit-reporter --reporter-options mochaFile=./testreports/tests-results-jenkins.xml build/tests",
     "presonar": "npm run clean && tsc",
     "sonar": "mocha --recursive --require build/tests/index.js --reporter mocha-sonar-reporter --reporter-options mochaFile=./testreports/tests-results-sonar.xml build/tests",
-    "predebugTest": "npm run clean && tsc",
-    "debugTest": "mocha --recursive --require build/tests/index.js --debug-brk --reporter spec build/tests",
-    "precover": "npm run clean && tsc",
-    "cover": "node ./node_modules/istanbul/lib/cli.js cover -x '*.jenkins.js' --report json --include-all-sources true _mocha -- --require build/tests/index.js build/tests/**/*.spec.js",
-    "postcover": "remap-istanbul -i ./coverage/coverage.raw.json -o ./coverage/html-report -t html"
+    "predebugTest": "npm run clean",
+    "debugTest": "mocha --recursive --require tests/index.ts --compilers ts:ts-node/register --debug-brk tests",
+    "precover": "npm run clean",
+    "cover": "nyc report --all --reporter=text-summary --reporter=lcov --reporter=json --reporter=html npm test"
   },
   "config": {
     "mocha-sonar-reporter": {
       "classname": "Test",
       "testdir": "build/test",
       "outputfile": "testreports/tests-results.xml"
+    },
+    "nyc": {
+      "include": [
+        "src/*.ts",
+        "src/**/*.ts"
+      ],
+      "exclude": [
+        "typings",
+        "**/*.js",
+        "**/*.spec.ts"
+      ],
+      "extension": [
+        ".ts"
+      ],
+      "require": [
+        "ts-node/register"
+      ],
+      "reporter": [
+        "text-summary",
+        "json",
+        "html",
+        "lcov"
+      ],
+      "all": true
     }
   },
   "repository": {
@@ -43,12 +67,13 @@
     "@types/mocha": "^2.2.33",
     "@types/node": "0.0.2",
     "chai": "^3.5.0",
-    "istanbul": "^1.0.0-alpha.2",
     "mocha": "^3.2.0",
     "mocha-junit-reporter": "^1.12.1",
     "mocha-sonar-reporter": "^0.1.6",
-    "remap-istanbul": "^0.7.0",
-    "typescript": "^2.1.4"
+    "nyc": "^10.0.0",
+    "ts-node": "^1.7.2",
+    "typescript": "^2.1.4",
+    "typings": "^1.1.0"
   },
   "dependencies": {
     "app-module-path": "^2.1.0",
