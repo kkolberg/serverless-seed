@@ -1,6 +1,7 @@
 import * as Chai from 'chai';
 import { PetsRepo } from 'src/functions/pets/lib/repository/PetsRepo'
 const assert = Chai.assert;
+import{Blah} from 'src/lib/Blah'
 
 describe('PetsRepo', () => {
     it('should do something', () => {
