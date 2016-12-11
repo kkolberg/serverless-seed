@@ -7,7 +7,7 @@
         "target": "ES6",
         "moduleResolution": "node",
         "sourceMap": true,
-        "baseUrl": ".",
+        
         "typeRoots": [
             "./node_modules/@types"
         ]
