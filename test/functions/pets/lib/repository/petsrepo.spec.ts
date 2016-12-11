@@ -1,5 +1,4 @@
-
-import { PetsRepo } from './petsrepo'
+import { PetsRepo } from '../../../../../src/functions/pets/lib/repository/petsrepo';
 
 
 describe('PetsRepo', () => {

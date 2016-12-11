@@ -11,7 +11,7 @@
     "predeploy": "npm run clean tsc && npm prune --production",
     "deploy": "sls deploy",
     "pretest": "npm run clean",
-    "test": "karma start"
+    "test": "karma start --single-run"
   },
   "repository": {
     "type": "git",
@@ -32,6 +32,7 @@
     "karma-chrome-launcher": "^2.0.0",
     "karma-cli": "^1.0.1",
     "karma-mocha": "^1.3.0",
+    "karma-phantomjs-launcher": "^1.0.2",
     "karma-typescript": "^2.1.4",
     "mocha": "^3.1.2",
     "typescript": "latest",
