@@ -1,11 +1,10 @@
-module.exports = function(config) {
+module.exports = function (config) {
     config.set({
-        
-        frameworks: ["mocha", "karma-typescript"],
 
+        frameworks: ["mocha", "karma-typescript"],
         files: [
             { pattern: "node_modules/expect.js/index.js" },
-            { pattern: "src/**/!(handler).ts" },
+            { pattern: "src/**/*.ts" },
             { pattern: "test/**/*.ts" }
         ],
 
@@ -14,13 +13,17 @@ module.exports = function(config) {
         },
 
         karmaTypescriptConfig: {
+            tsconfig: "./tsconfig.json",
             reports:
             {
-                "html": "coverage",
+                "html": "coverage/html",
                 "text-summary": "",
-                "json": "coverage",
-                "lcovonly": "coverage"
-            }               
+                "json": "coverage/json",
+                "lcovonly": "coverage/lcovonly"
+            },
+            "include": [
+                "**/*.ts"
+            ]
         },
         reporters: ["progress", "karma-typescript"],
         browsers: ['PhantomJS']

@@ -3,12 +3,14 @@ import expect = require('expect.js');
 
 describe('PetsRepo', () => {
     it('should do something', () => {
-        let repo = new PetsRepo((meh: String, callback: Function) => {
-            callback(null, "blah said " + meh);
+        let repo = new PetsRepo({
+            something: (callback: Function) => {
+                callback(null, "blah said ");
+            }
         });
 
         repo.something((err: any, result: String) => {
-            expect(result).to.contain("CatDog");
+            expect(result).to.contain("blah said ");
         });
     });
 });

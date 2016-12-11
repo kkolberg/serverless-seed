@@ -10,7 +10,7 @@
     "start": "node --debug `which serverless` offline start",
     "predeploy": "npm run clean && tsc && npm prune --production",
     "deploy": "sls deploy",
-    "precover": "npm run clean",
+    "precover": "npm run clean && tsc",
     "cover": "karma start --single-run",
     "pretest": "npm run clean && tsc",
     "test": "mocha --recursive build/test",
