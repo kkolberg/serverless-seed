@@ -5,13 +5,15 @@
   "main": "index.js",
   "scripts": {
     "clean": "rm -rf build && rm -rf coverage && rm -rf testreports && rm -rf .serverless && rm -rf .sonar",
-    "installglobals": "npm install -g serverless mocha typescript nyc",
+    "installglobals": "npm install -g serverless mocha typescript karma",
     "prestart": "npm run clean && tsc",
     "start": "node --debug `which serverless` offline start",
     "predeploy": "npm run clean tsc && npm prune --production",
     "deploy": "sls deploy",
     "pretest": "npm run clean",
-    "test": "karma start --single-run"
+    "test": "karma start --single-run",
+    "predebug": "npm run clean && tsc",
+    "debug": "mocha --recursive --debug-brk build/test"
   },
   "repository": {
     "type": "git",

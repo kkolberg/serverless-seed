@@ -1,5 +1,5 @@
 import { PetsRepo } from '../../../../../src/functions/pets/lib/repository/petsrepo';
-
+import expect = require('expect.js');
 
 describe('PetsRepo', () => {
     it('should do something', () => {
