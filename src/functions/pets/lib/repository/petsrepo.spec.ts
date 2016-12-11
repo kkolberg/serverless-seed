@@ -1,6 +1,6 @@
-import * as Chai from 'chai';
-import { PetsRepo } from 'src/functions/pets/lib/repository/PetsRepo'
-const assert = Chai.assert;
+
+import { PetsRepo } from './petsrepo'
+
 
 describe('PetsRepo', () => {
     it('should do something', () => {
@@ -9,8 +9,7 @@ describe('PetsRepo', () => {
         });
 
         repo.something((err: any, result: String) => {
-            assert.isNull(err);
-            assert.isNotNull(result);
+            expect(result).to.contain("CatDog");
         });
     });
 });

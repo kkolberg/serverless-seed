@@ -1,15 +1,13 @@
 {
+    "compileOnSave": false,
     "compilerOptions": {
         "module": "commonjs",
-        "target": "es6",
-        "alwaysStrict": true,
-        "noImplicitAny": false,
-        "removeComments": true,
-        "sourceMap": true,
-        "moduleResolution": "node",
-        "baseUrl": ".",
-        "declaration": true,
+        "noImplicitAny": true,
         "outDir": "./build",
+        "target": "ES6",
+        "moduleResolution": "node",
+        "sourceMap": true,
+        "baseUrl": ".",
         "typeRoots": [
             "./node_modules/@types"
         ]

@@ -10,49 +10,8 @@
     "start": "node --debug `which serverless` offline start",
     "predeploy": "npm run clean tsc && npm prune --production",
     "deploy": "sls deploy",
-    "pretest": "npm run clean && tsc",
-    "test": "NODE_ENV=test mocha",
-    "prejenkins": "npm run clean",
-    "jenkins": "mocha --recursive --require build/tests/index.js --reporter mocha-junit-reporter --reporter-options mochaFile=./testreports/tests-results-jenkins.xml build/tests",
-    "presonar": "npm run clean && tsc",
-    "sonar": "mocha --recursive --require build/tests/index.js --reporter mocha-sonar-reporter --reporter-options mochaFile=./testreports/tests-results-sonar.xml build/tests",
-    "predebugTest": "npm run clean",
-    "debugTest": "mocha --recursive --require tests/index.ts --compilers ts:ts-node/register --debug-brk tests",
-    "precover": "npm run clean && tsc",
-    "cover": "nyc -all -x 'test/*.ts' -x 'test/**/*.ts' -x '*.jenkins.js' --reporter=html --require ts-node/register ./node_modules/.bin/_mocha"
-  },
-  "config": {
-    "mocha-sonar-reporter": {
-      "classname": "Test",
-      "testdir": "build/test",
-      "outputfile": "testreports/tests-results.xml"
-    },
-    "nyc": {
-      "include": [
-        "src/**/*.ts"
-      ],
-      "exclude": [
-        "node_modules/",
-        "**/*.js",
-        "*.js",
-        "**/*.spec.ts"
-      ],
-      "extension": [
-        ".ts"
-      ],
-      "require": [
-        "ts-node/register"
-      ],
-      "reporter": [
-        "text-summary",
-        "json",
-        "html",
-        "lcov"
-      ],
-      "all": true,
-      "sourceMap": true,
-      "instrument": true
-    }
+    "pretest": "npm run clean",
+    "test": "karma start"
   },
   "repository": {
     "type": "git",
@@ -65,18 +24,18 @@
   },
   "homepage": "https://github.com/kkolberg/serverless-seed#readme",
   "devDependencies": {
-    "@types/chai": "^3.4.34",
+    "@types/expect.js": "^0.3.29",
     "@types/mocha": "^2.2.33",
     "@types/node": "0.0.2",
-    "chai": "^3.5.0",
-    "istanbul": "^0.4.5",
-    "mocha": "^3.2.0",
-    "mocha-junit-reporter": "^1.12.1",
-    "mocha-sonar-reporter": "^0.1.6",
-    "nyc": "^10.0.0",
-    "ts-node": "^1.7.2",
-    "typescript": "^2.1.4",
-    "typings": "^1.1.0"
+    "expect.js": "^0.3.1",
+    "karma": "^1.2.0",
+    "karma-chrome-launcher": "^2.0.0",
+    "karma-cli": "^1.0.1",
+    "karma-mocha": "^1.3.0",
+    "karma-typescript": "^2.1.4",
+    "mocha": "^3.1.2",
+    "typescript": "latest",
+    "typings": "^2.0.0"
   },
   "dependencies": {
     "app-module-path": "^2.1.0",

@@ -1,7 +1,8 @@
 import path = require("path");
-require("app-module-path").addPath("." + path.sep + "build");
 
-import {Blah} from 'src/lib/Blah'
+require("app-module-path").addPath("." + path.sep + "build");
+require("app-module-path").addPath("." + path.sep + "src");
+
 export function pets(event: any, context: any, callback: any) {
   const response = {
     statusCode: 200,

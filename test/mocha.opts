@@ -1,5 +1,0 @@
---compilers ts-node/register
---full-trace
---bail
---require test/index.ts
-test/**/*.spec.ts
