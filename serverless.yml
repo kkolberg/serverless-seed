@@ -12,15 +12,14 @@ package:
     - .git/**
     - coverage/**
     - .sonar/**
-    - functions/**
+    - src/**
     - node_modules/@types/**
     - testresults
-    - build/tests/**
-    - src/**
+    - build/**/*.js.map
+    - build/test/**
     - sonar-project.properties
     - versioning.js
     - tsconfig.json
-    - build/**/*.js.map
 
 
   

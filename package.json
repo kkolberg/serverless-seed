@@ -4,16 +4,18 @@
   "description": "Sample project",
   "main": "index.js",
   "scripts": {
-    "clean": "rm -rf build && rm -rf coverage && rm -rf testreports && rm -rf .serverless && rm -rf .sonar",
+    "clean": "rm -rf build && rm -rf coverage && rm -rf testreports && rm -rf .serverless && rm -rf .sonar && npm install",
     "installglobals": "npm install -g serverless mocha typescript karma",
     "prestart": "npm run clean && tsc",
     "start": "node --debug `which serverless` offline start",
-    "predeploy": "npm run clean tsc && npm prune --production",
+    "predeploy": "npm run clean && tsc && npm prune --production",
     "deploy": "sls deploy",
-    "pretest": "npm run clean",
-    "test": "karma start --single-run",
-    "predebug": "npm run clean && tsc",
-    "debug": "mocha --recursive --debug-brk build/test"
+    "precover": "npm run clean",
+    "cover": "karma start --single-run",
+    "pretest": "npm run clean && tsc",
+    "test": "mocha --recursive build/test",
+    "pretestdebug": "npm run clean && tsc",
+    "testdebug": "mocha --recursive --debug-brk build/test"
   },
   "repository": {
     "type": "git",
