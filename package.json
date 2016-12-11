@@ -19,7 +19,7 @@
     "predebugTest": "npm run clean",
     "debugTest": "mocha --recursive --require tests/index.ts --compilers ts:ts-node/register --debug-brk tests",
     "precover": "npm run clean && tsc",
-    "cover": "nyc --require ts-node/register ./node_modules/.bin/_mocha"
+    "cover": "nyc -all -x 'test/*.ts' -x 'test/**/*.ts' -x '*.jenkins.js' --reporter=html --require ts-node/register ./node_modules/.bin/_mocha"
   },
   "config": {
     "mocha-sonar-reporter": {
