@@ -13,6 +13,15 @@ module.exports = function(config) {
             "**/*.ts": ["karma-typescript"]
         },
 
+        karmaTypescriptConfig: {
+            reports:
+            {
+                "html": "coverage",
+                "text-summary": "",
+                "json": "coverage",
+                "lcovonly": "coverage"
+            }               
+        },
         reporters: ["progress", "karma-typescript"],
         browsers: ['PhantomJS']
     });
