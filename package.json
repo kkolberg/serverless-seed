@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "clean": "rm -rf build && rm -rf coverage && rm -rf testreports && rm -rf .serverless && rm -rf .sonar && npm install",
-    "installglobals": "npm install -g serverless mocha typescript karma",
+    "installglobals": "npm install -g serverless mocha typescript karma typings",
     "prestart": "npm run clean && tsc",
     "start": "node --debug `which serverless` offline start",
     "predeploy": "npm run clean && tsc && npm prune --production",

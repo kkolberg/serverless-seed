@@ -4,7 +4,7 @@ module.exports = function (config) {
         frameworks: ["mocha", "karma-typescript"],
         files: [
             { pattern: "node_modules/expect.js/index.js" },
-            { pattern: "src/**/*.ts" },
+            { pattern: "src/**/!(handler).ts" },
             { pattern: "test/**/*.ts" }
         ],
 
@@ -13,17 +13,13 @@ module.exports = function (config) {
         },
 
         karmaTypescriptConfig: {
-            tsconfig: "./tsconfig.json",
             reports:
             {
                 "html": "coverage/html",
                 "text-summary": "",
                 "json": "coverage/json",
                 "lcovonly": "coverage/lcovonly"
-            },
-            "include": [
-                "**/*.ts"
-            ]
+            }
         },
         reporters: ["progress", "karma-typescript"],
         browsers: ['PhantomJS']

@@ -1,10 +1,9 @@
-import {RepoInterface} from './RepoInterface';
-import {Blah} from '../../../../lib/Blah';
+import {RepoInterface} from './repointerface';
 
 export class PetsRepo implements RepoInterface {
     private blah: any;
 
-    constructor(blah: Blah) {
+    constructor(blah: any) {
         this.blah = blah;
     }
 

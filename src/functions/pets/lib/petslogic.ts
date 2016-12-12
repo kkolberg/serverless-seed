@@ -1,8 +1,6 @@
-import {RepoInterface} from './repository/RepoInterface';
-
 export class PetsLogic {
-    private repo: RepoInterface;
-    constructor(repo: RepoInterface) {
+    private repo: any;
+    constructor(repo: any) {
         this.repo = repo;
     }
     something(callback: Function) {

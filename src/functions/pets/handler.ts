@@ -1,11 +1,8 @@
 import path = require("path");
 
-require("app-module-path").addPath("." + path.sep + "build");
-require("app-module-path").addPath("." + path.sep);
+ require("app-module-path").addPath("." + path.sep + "build");
+ require("app-module-path").addPath("." + path.sep);
 
-import { PetsRepo } from './lib/repository/PetsRepo';
-import { Blah } from '../../lib/Blah';
-import { PetsLogic } from './lib/PetsLogic';
 
 export function pets(event: any, context: any, callback: Function) {
 
@@ -19,7 +16,4 @@ export function pets(event: any, context: any, callback: Function) {
       }
     })
   };
-
-  let logic = new PetsLogic(new PetsRepo(new Blah()));
-  logic.something(done);
 }
