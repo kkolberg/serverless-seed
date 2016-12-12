@@ -11,17 +11,19 @@ module.exports = function (config) {
         preprocessors: {
             "**/*.ts": ["karma-typescript"]
         },
-
-        karmaTypescriptConfig: {
-            reports:
-            {
-                "html": "coverage/html",
-                "text-summary": "",
-                "json": "coverage/json",
-                "lcovonly": "coverage/lcovonly"
-            }
+        reporters: ["progress", "karma-typescript", "junit", "coverage"],
+        browsers: ['PhantomJS'],
+        junitReporter: {
+            outputDir: 'coverage',
+            useBrowserName: false,
+            outputFile: 'junit/TESTS-RESULT.xml'
         },
-        reporters: ["progress", "karma-typescript"],
-        browsers: ['PhantomJS']
+        coverageReporter: {
+            dir: 'coverage',
+            subdir: '.',
+            reporters: [
+                { type: 'lcov', subdir: 'report-lcov' }
+            ]
+        }
     });
 };
