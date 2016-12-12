@@ -1,7 +1,6 @@
 import path = require("path");
 
- require("app-module-path").addPath("." + path.sep + "build");
- require("app-module-path").addPath("." + path.sep);
+require("app-module-path").addPath("." + path.sep + "build");
 
 
 export function pets(event: any, context: any, callback: Function) {

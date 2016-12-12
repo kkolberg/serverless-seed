@@ -1,3 +1,5 @@
+import {RepoInterface} from './repository/repointerface';
+
 export class PetsLogic {
     private repo: any;
     constructor(repo: any) {
