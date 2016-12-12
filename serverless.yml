@@ -28,8 +28,11 @@ functions:
     handler: build/src/functions/pets/handler.pets
     events:
       - http:
-          path: users/create
-          method: get
+          path: pets
+          method: GET
+      - http:
+          path: pets
+          method: POST
 
 plugins:
   - serverless-offline

@@ -2,17 +2,14 @@ import path = require("path");
 
 require("app-module-path").addPath("." + path.sep + "build");
 
+import { Pet } from './model/pet';
+import { PetsLogic } from './lib/petslogic';
+import { PetsRepo } from './lib/repository/petsrepo';
+import { ResponseHandler } from '../../lib/responsehandler';
+
+
 
 export function pets(event: any, context: any, callback: Function) {
-
-
-  var done = function (err: any, res: any) {
-    callback(null, {
-      statusCode: err ? '400' : '200',
-      body: err ? JSON.stringify({ error: err.message }) : JSON.stringify(res),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
-  };
+  let logic = new PetsLogic(new PetsRepo(), new ResponseHandler());
+  logic.handle(event, context, callback);
 }

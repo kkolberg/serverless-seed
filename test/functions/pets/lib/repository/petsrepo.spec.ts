@@ -1,16 +1,13 @@
 import { PetsRepo } from '../../../../../src/functions/pets/lib/repository/petsrepo';
+import { Pet } from '../../../../../src/functions/pets/model/pet';
 import expect = require('expect.js');
 
 describe('PetsRepo', () => {
     it('should do something', () => {
-        let repo = new PetsRepo({
-            something: (callback: Function) => {
-                callback(null, "blah said ");
-            }
-        });
+        let repo = new PetsRepo();
 
-        repo.something((err: any, result: String) => {
-            expect(result).to.contain("blah said ");
+        repo.fetch((err: any, result: String) => {
+            expect(result.length).to.equal(0);
         });
     });
 });

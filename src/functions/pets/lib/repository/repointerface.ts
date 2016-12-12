@@ -1,3 +1,6 @@
+import { Pet } from '../../model/pet'
+
 export interface RepoInterface {
-   something(callback: Function): void;
+    fetch(callback: Function): void;
+    save(pet: Pet, callback: Function): void;
 }

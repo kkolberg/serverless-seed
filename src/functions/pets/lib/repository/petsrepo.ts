@@ -1,13 +1,15 @@
-import {RepoInterface} from './repointerface';
+import { RepoInterface } from './repointerface';
+import { Pet } from '../../model/pet';
 
 export class PetsRepo implements RepoInterface {
-    private blah: any;
+    private pets: Pet[] = [];
 
-    constructor(blah: any) {
-        this.blah = blah;
+    fetch(callback: Function) {
+        callback(null, this.pets);
     }
 
-    something(callback: Function) {
-        this.blah.something(callback);
+    save(pet: Pet, callback: Function) {
+        this.pets.push(pet);
+        callback(null, this.pets);
     }
 }
