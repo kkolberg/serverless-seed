@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "clean": "shx rm -rf build && shx rm -rf coverage && shx rm -rf testreports && shx rm -rf .serverless && shx rm -rf .sonar && npm install",
-    "globals": "npm install -g serverless mocha typescript typings istanbul",
+    "globals": "npm install -g serverless mocha typescript typings istanbul shx",
     "prestart": "npm run clean && tsc",
     "start": "node --debug node_modules/serverless/bin/serverless offline start",
     "predeploy": "npm run clean && tsc && npm prune --production",
@@ -36,7 +36,6 @@
     "mocha": "^3.1.2",
     "remap-istanbul": "^0.8.0",
     "serverless": "^1.3.0",
-    "shelljs": "^0.7.5",
     "temp": "^0.8.3",
     "typescript": "latest",
     "typings": "^2.0.0"
