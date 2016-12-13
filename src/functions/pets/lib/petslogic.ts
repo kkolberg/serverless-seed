@@ -1,12 +1,12 @@
-import { RepoInterface } from 'src/functions/pets/lib/repository/repointerface';
-import { ResponseHandler } from 'src/lib/responsehandler';
-import { Pet } from 'src/functions/pets/model/pet'
+import { PetsRepository } from 'src/functions/pets/lib/repository/PetsRepository';
+import { ResponseHandler } from 'src/lib/ResponseHandler';
+import { Pet } from 'src/functions/pets/model/Pet'
 
 export class PetsLogic {
-    private repo: RepoInterface;
+    private repo: PetsRepository;
     private respHandler: ResponseHandler;
 
-    constructor(repo: RepoInterface, respHandler: ResponseHandler) {
+    constructor(repo: PetsRepository, respHandler: ResponseHandler) {
         this.repo = repo;
         this.respHandler = respHandler;
     }

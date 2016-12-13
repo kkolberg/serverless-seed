@@ -1,10 +1,10 @@
-import { RepoInterface } from 'src/functions/pets/lib/repository/repointerface';
-import { Pet } from 'src/functions/pets/model/pet';
+import { PetsRepository } from 'src/functions/pets/lib/repository/PetsRepository';
+import { Pet } from 'src/functions/pets/model/Pet';
 
 import fs = require('fs');
 var temp = require("temp").track();
 
-export class LocalFileRepo implements RepoInterface {
+export class LocalFileRepo implements PetsRepository {
 
     type: string = "LocalFileRepo";
 
