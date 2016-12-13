@@ -7,7 +7,7 @@
     "clean": "rm -rf build && rm -rf coverage && rm -rf testreports && rm -rf .serverless && rm -rf .sonar && npm install",
     "globals": "npm install -g serverless mocha typescript typings istanbul",
     "prestart": "npm run clean && tsc",
-    "start": "node --debug `which serverless` offline start",
+    "start": "node --debug node_modules/serverless/bin/serverless offline start",
     "predeploy": "npm run clean && tsc && npm prune --production",
     "deploy": "sls deploy",
     "precover": "npm run clean && tsc",
