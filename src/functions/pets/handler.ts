@@ -1,5 +1,5 @@
+//used so aws lambda knows how to find the compiled files
 import path = require("path");
-
 require("app-module-path").addPath("." + path.sep + "build");
 
 import { Pet } from './model/pet';
