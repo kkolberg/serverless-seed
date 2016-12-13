@@ -7,9 +7,9 @@
         "target": "ES5",
         "moduleResolution": "node",
         "sourceMap": true,
-        "baseUrl":".",
+        "baseUrl": ".",
         "declaration": true,
-        "types" : [
+        "types": [
             "mocha",
             "expect.js",
             "node"
