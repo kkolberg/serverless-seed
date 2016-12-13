@@ -4,7 +4,7 @@ require("app-module-path").addPath("." + path.sep + "build");
 
 import { Pet } from './model/pet';
 import { PetsLogic } from './lib/petslogic';
-import { PetsRepo } from './lib/repository/petsrepo';
+import { LocalFileRepo as PetsRepo} from './lib/repository/localfilerepo';
 import { ResponseHandler } from '../../lib/responsehandler';
 
 

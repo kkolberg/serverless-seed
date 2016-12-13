@@ -1,10 +1,11 @@
 import expect = require('expect.js');
-import { PetsLogic } from '../../../../src/functions/pets/lib/petslogic';
-import { Pet } from '../../../../src/functions/pets/model/pet';
+import { PetsLogic } from 'src/functions/pets/lib/petslogic';
+import { Pet } from 'src/functions/pets/model/pet';
 
 describe('PetsLogic', () => {
     it('should call fetch', () => {
         let repo = {
+            type: "mock",
             fetch(callback: Function) {
                 let pet = {
                     "name": "cat",

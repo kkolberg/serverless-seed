@@ -1,6 +1,6 @@
-import { RepoInterface } from './repository/repointerface';
-import { ResponseHandler } from '../../../lib/responsehandler';
-import { Pet } from '../model/pet'
+import { RepoInterface } from 'src/functions/pets/lib/repository/repointerface';
+import { ResponseHandler } from 'src/lib/responsehandler';
+import { Pet } from 'src/functions/pets/model/pet'
 
 export class PetsLogic {
     private repo: RepoInterface;
