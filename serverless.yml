@@ -1,10 +1,17 @@
-service: petshop
+service: petshop${file(versioning.js):version} #the ${} is used by jenkins to up version in pr
 
 provider:
   name: aws
   runtime: nodejs4.3
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - s3:*
+      Resource: "*"
   environment:
     IS_SERVERLESS: true
+    BUCKET: petbucketkksomething
+    GLU_URL: https://d9095b6yh1.execute-api.us-east-1.amazonaws.com/s3/glu
 
 package:
   exclude:
@@ -27,11 +34,32 @@ functions:
   pets:
     handler: build/src/functions/pets/handler.pets
     events:
+      - http: 
+          path: pets/heartbeat
+          method: GET
       - http:
           path: pets
           method: GET
       - http:
           path: pets
+          method: POST
+  auth:
+    handler: build/src/functions/auth/handler.auth
+    events:
+      - http:
+          path: auth/heartbeat
+          method: GET
+      - http:
+          path: auth
+          method: POST
+  mockglu:
+    handler: build/src/functions/mockglu/handler.glu
+    events:
+      - http:
+          path: glu/heartbeat
+          method: GET
+      - http:
+          path: glu
           method: POST
 
 plugins:
