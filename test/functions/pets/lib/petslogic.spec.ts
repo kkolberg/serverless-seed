@@ -19,6 +19,7 @@ describe('PetsLogic', () => {
 
             }
         };
+
         let respHandler = {
             done(err: any, res: any, callback: Function) {
                 callback(err, res);
@@ -26,8 +27,8 @@ describe('PetsLogic', () => {
         };
 
         let cb = function (err: any, res: any) {
-            expect(res.length).to.equal(1);
-            expect(res[0].name).to.equal("cat");
+            expect(res.pets.length).to.equal(1);
+            expect(res.pets[0].name).to.equal("cat");
         };
 
         let petsLogic = new PetsLogic(repo, respHandler);
