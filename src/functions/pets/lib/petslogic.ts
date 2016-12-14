@@ -13,10 +13,18 @@ export class PetsLogic {
 
 
     handle(event: any, context: any, callback: Function) {
+        if (event && event.path && event.path.includes('heartbeat')) {
+            return this.respHandler.done(null, { "alive": true }, callback);
+        }
+
         switch (event.httpMethod) {
             case 'GET':
                 this.repo.fetch((err: any, res: any) => {
-                    this.respHandler.done(null, res, callback);
+                    this.respHandler.done(null,
+                        {
+                            "pets": res,
+                            "repo": this.repo.type
+                        }, callback);
                 });
                 break;
             case 'POST':
@@ -30,7 +38,11 @@ export class PetsLogic {
     private savePet(event: any, callback: Function) {
         let pet = <Pet>JSON.parse(event.body);
         this.repo.save(pet, (err: any, res: Array<Pet>) => {
-            this.respHandler.done(err, res, callback);
+            this.respHandler.done(err,
+                {
+                    "pets": res,
+                    "repo": this.repo.type
+                }, callback);
         });
     }
 }

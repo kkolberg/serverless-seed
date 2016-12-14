@@ -39,6 +39,15 @@ functions:
       - http:
           path: pets
           method: POST
+  auth:
+    handler: build/src/functions/auth/handler.auth
+    events:
+      - http:
+          path: auth/heartbeat
+          method: GET
+      - http:
+          path: auth
+          method: GET
 
 plugins:
   - serverless-offline
