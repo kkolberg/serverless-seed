@@ -9,12 +9,10 @@ import request = require("request");
 import { AuthLogic } from 'src/functions/auth/lib/AuthLogic';
 import { ResponseHandler } from 'src/lib/ResponseHandler';
 import { AuthRepository } from 'src/functions/auth/lib/repository/AuthRepository';
-import { GluConfig } from 'src/functions/auth/model/GluConfig';
+import { AuthConfig } from 'src/functions/auth/model/AuthConfig';
 
 export function auth(event: any, context: any, callback: Function) {
-    let config = <GluConfig>{
-        url: process.env.GLU_URL
-    };
+    let config = new AuthConfig();
 
     let logic = new AuthLogic(new AuthRepository(config, request), new ResponseHandler());
 

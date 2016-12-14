@@ -1,5 +1,5 @@
 import request = require("@types/request");
-import { GluConfig } from 'src/functions/auth/model/GluConfig';
+import { AuthConfig } from 'src/functions/auth/model/AuthConfig';
 import { IAM } from 'src/functions/auth/model/IAM';
 import { Statement } from 'src/functions/auth/model/Statement';
 
@@ -14,9 +14,9 @@ interface GluRequest {
 export class AuthRepository {
 
     private request: request.RequestAPI<request.Request, request.CoreOptions, request.UriOptions>;
-    private config: GluConfig;
+    private config: AuthConfig;
 
-    constructor(config: GluConfig, request: request.RequestAPI<request.Request, request.CoreOptions, request.UriOptions>) {
+    constructor(config: AuthConfig, request: request.RequestAPI<request.Request, request.CoreOptions, request.UriOptions>) {
         this.config = config;
         this.request = request;
     }
