@@ -11,6 +11,7 @@ provider:
   environment:
     IS_SERVERLESS: true
     BUCKET: petbucketkksomething
+    GLU_URL: https://d9095b6yh1.execute-api.us-east-1.amazonaws.com/s3/glu
 
 package:
   exclude:

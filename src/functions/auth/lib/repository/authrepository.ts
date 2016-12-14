@@ -1,4 +1,5 @@
 import request = require("@types/request");
+import { GluConfig } from 'src/functions/auth/model/GluConfig';
 import { IAM } from 'src/functions/auth/model/IAM';
 import { Statement } from 'src/functions/auth/model/Statement';
 
@@ -13,8 +14,10 @@ interface GluRequest {
 export class AuthRepository {
 
     private request: request.RequestAPI<request.Request, request.CoreOptions, request.UriOptions>;
+    private config: GluConfig;
 
-    constructor(request: request.RequestAPI<request.Request, request.CoreOptions, request.UriOptions>) {
+    constructor(config: GluConfig, request: request.RequestAPI<request.Request, request.CoreOptions, request.UriOptions>) {
+        this.config = config;
         this.request = request;
     }
 
@@ -60,7 +63,7 @@ export class AuthRepository {
             callback(null, iam);
         };
 
-        this.request.post("https://d9095b6yh1.execute-api.us-east-1.amazonaws.com/s3/glu", {
+        this.request.post(this.config.url, {
             body: JSON.stringify(gluReq)
         }, handleResponse);
     };
