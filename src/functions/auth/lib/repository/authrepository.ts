@@ -63,7 +63,7 @@ export class AuthRepository {
             callback(null, iam);
         };
 
-        this.request.post(this.config.url, {
+        this.request.post(this.config.gluUrl, {
             body: JSON.stringify(gluReq)
         }, handleResponse);
     };

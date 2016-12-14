@@ -1,5 +1,5 @@
 import { PetsRepository } from 'src/functions/pets/lib/repository/PetsRepository';
-import { ResponseHandler } from 'src/lib/ResponseHandler';
+import { ResponseHandler } from 'src/shared/lib/ResponseHandler';
 import { Pet } from 'src/functions/pets/model/Pet'
 
 export class PetsLogic {

@@ -5,7 +5,7 @@
 import path = require("path");
 require("app-module-path").addPath("." + path.sep + "build");
 
-import { ResponseHandler } from 'src/lib/ResponseHandler';
+import { ResponseHandler } from 'src/shared/lib/ResponseHandler';
 
 export function glu(event: any, context: any, callback: Function) {
     let respHandler = new ResponseHandler();

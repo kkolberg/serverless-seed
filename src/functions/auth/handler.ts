@@ -7,7 +7,7 @@ require("app-module-path").addPath("." + path.sep + "build");
 
 import request = require("request");
 import { AuthLogic } from 'src/functions/auth/lib/AuthLogic';
-import { ResponseHandler } from 'src/lib/ResponseHandler';
+import { ResponseHandler } from 'src/shared/lib/ResponseHandler';
 import { AuthRepository } from 'src/functions/auth/lib/repository/AuthRepository';
 import { AuthConfig } from 'src/functions/auth/model/AuthConfig';
 

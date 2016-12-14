@@ -7,11 +7,13 @@ require("app-module-path").addPath("." + path.sep + "build");
 
 import { Pet } from 'src/functions/pets/model/Pet';
 import { PetsLogic } from 'src/functions/pets/lib/PetsLogic';
-import { ResponseHandler } from 'src/lib/ResponseHandler';
-import {RepositoryFactory}from 'src/functions/pets/lib/repository/RepositoryFactory';
+import { ResponseHandler } from 'src/shared/lib/ResponseHandler';
+import { RepositoryFactory } from 'src/functions/pets/lib/repository/RepositoryFactory';
+import { PetsConfig } from 'src/functions/pets/model/PetsConfig';
 
 export function pets(event: any, context: any, callback: Function) {
-  let logic = new PetsLogic(new RepositoryFactory().getRepository(), new ResponseHandler());
- 
+
+  let logic = new PetsLogic(new RepositoryFactory(new PetsConfig()).getRepository(), new ResponseHandler());
+
   logic.handle(event, context, callback);
 }
