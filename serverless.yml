@@ -51,6 +51,15 @@ functions:
       - http:
           path: auth
           method: GET
+  mockglu:
+    handler: build/src/functions/mockglu/handler.glu
+    events:
+      - http:
+          path: glu/heartbeat
+          method: GET
+      - http:
+          path: glu
+          method: POST
 
 plugins:
   - serverless-offline
