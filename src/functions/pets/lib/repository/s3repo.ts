@@ -60,7 +60,7 @@ export class S3Repo implements PetsRepository {
             pets.push(pet);
 
             new self.aws.S3().putObject({
-                Bucket: self.config.s3BucketKey,
+                Bucket: self.config.s3BucketName,
                 Key: self.config.s3BucketKey,
                 Body: JSON.stringify(pets)
             }, (err: any) => {
