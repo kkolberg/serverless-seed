@@ -4,6 +4,7 @@
 //when compiled the files are actually in ./build/src/*
 import path = require("path");
 require("app-module-path").addPath("." + path.sep + "build");
+var dotenv = require('dotenv').config({ silent: true });
 
 import { Pet } from 'src/functions/pets/model/Pet';
 import { PetsLogic } from 'src/functions/pets/lib/PetsLogic';

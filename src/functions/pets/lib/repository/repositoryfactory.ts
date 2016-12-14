@@ -4,6 +4,10 @@ import { LocalFileRepo } from 'src/functions/pets/lib/repository/LocalFileRepo';
 import { S3Repo } from 'src/functions/pets/lib/repository/S3Repo';
 import { PetsConfig } from 'src/functions/pets/model/PetsConfig';
 
+
+//This factory determines what type of repository should be used
+//If it is local dev, use the repo that writes to temp file
+//If running as a lambda, use the repo that writes to s3
 export class RepositoryFactory {
     private config: PetsConfig;
 
@@ -13,7 +17,7 @@ export class RepositoryFactory {
 
     getRepository(): PetsRepository {
         if (this.config.isServerless) {
-            return new S3Repo(AWS);
+            return new S3Repo(this.config, AWS);
         }
 
         return new LocalFileRepo();

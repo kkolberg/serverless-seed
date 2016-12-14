@@ -1,27 +1,30 @@
 import { PetsRepository } from 'src/functions/pets/lib/repository/PetsRepository';
 import { Pet } from 'src/functions/pets/model/Pet';
+import { PetsConfig } from 'src/functions/pets/model/PetsConfig';
 
 export class S3Repo implements PetsRepository {
     private aws: any;
-    private key: string = "petsBucket";
+    private config: PetsConfig;
+
     type: string = "s3Repo";
 
-    constructor(aws: any) {
+    constructor(config: PetsConfig, aws: any) {
         this.aws = aws;
+        this.config = config;
     }
 
     createKey(callback: Function) {
         new this.aws.S3().putObject({
-            Bucket: process.env.BUCKET,
-            Key: this.key,
+            Bucket: this.config.s3BucketName,
+            Key: this.config.s3BucketKey,
             Body: JSON.stringify([])
         }, callback);
     }
 
     fetch(callback: Function) {
         new this.aws.S3().getObject({
-            Bucket: process.env.BUCKET,
-            Key: this.key
+            Bucket: this.config.s3BucketName,
+            Key: this.config.s3BucketKey
         }, (err: any, data: any) => {
             if (err && err.code === 'NoSuchKey') {
                 this.createKey((err: any) => {
@@ -49,7 +52,7 @@ export class S3Repo implements PetsRepository {
     save(pet: Pet, callback: Function) {
         var self = this;
         let put = function (err: any, pets: Pet[]) {
-           
+
             if (err) {
                 return callback(err, null);
             }
@@ -57,8 +60,8 @@ export class S3Repo implements PetsRepository {
             pets.push(pet);
 
             new self.aws.S3().putObject({
-                Bucket: process.env.BUCKET,
-                Key: self.key,
+                Bucket: self.config.s3BucketKey,
+                Key: self.config.s3BucketKey,
                 Body: JSON.stringify(pets)
             }, (err: any) => {
                 if (err) {

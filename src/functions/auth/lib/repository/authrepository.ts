@@ -21,6 +21,11 @@ export class AuthRepository {
         this.request = request;
     }
 
+    //TODO: this is business logic and should be moved out of this layer
+    //This is here as an example of transforming DTOs (data transer objects).
+    //The rest of the auth code probably should not care how to call glu or
+    //read the response from glu.
+    //This layer should transform the data to something the business code understands
     private buildIAM(status: string, methodArn: string) {
 
         let statement = <Statement>{

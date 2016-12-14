@@ -4,6 +4,7 @@ import { Pet } from 'src/functions/pets/model/Pet';
 import fs = require('fs');
 var temp = require("temp").track();
 
+//This is a dummy class design to local dev without having to call s3
 export class LocalFileRepo implements PetsRepository {
 
     type: string = "LocalFileRepo";
