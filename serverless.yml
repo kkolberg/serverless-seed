@@ -3,8 +3,14 @@ service: petshop
 provider:
   name: aws
   runtime: nodejs4.3
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - s3:*
+      Resource: "*"
   environment:
     IS_SERVERLESS: true
+    BUCKET: petbucketkksomething
 
 package:
   exclude:
