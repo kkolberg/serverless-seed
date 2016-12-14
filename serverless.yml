@@ -1,4 +1,4 @@
-service: petshop${file(versioning.js):version} #the ${} is used by jenkins to up version in pr
+service: petshop${file(versioning.jenkins.js):version} #the ${} is used by jenkins to up version in pr
 
 provider:
   name: aws
