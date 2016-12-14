@@ -5,13 +5,13 @@
 import path = require("path");
 require("app-module-path").addPath("." + path.sep + "build");
 
-
+import request = require("request");
 import { AuthLogic } from 'src/functions/auth/lib/AuthLogic';
 import { ResponseHandler } from 'src/lib/ResponseHandler';
 import { AuthRepository } from 'src/functions/auth/lib/repository/AuthRepository';
 
 export function auth(event: any, context: any, callback: Function) {
-    let logic = new AuthLogic(new AuthRepository(), new ResponseHandler());
+    let logic = new AuthLogic(new AuthRepository(request), new ResponseHandler());
 
     logic.handle(event, context, callback);
 }

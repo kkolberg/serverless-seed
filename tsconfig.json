@@ -13,7 +13,8 @@
             "mocha",
             "expect.js",
             "node",
-            "aws-sdk"
+            "aws-sdk",
+            "request"
         ]
     },
     "exclude": [

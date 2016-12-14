@@ -50,7 +50,7 @@ functions:
           method: GET
       - http:
           path: auth
-          method: GET
+          method: POST
   mockglu:
     handler: build/src/functions/mockglu/handler.glu
     events:

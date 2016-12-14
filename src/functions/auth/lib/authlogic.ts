@@ -15,9 +15,18 @@ export class AuthLogic {
             return this.respHandler.done(null, { "alive": true }, callback);
         }
 
-        this.repo.fetch(event.authorizationToken, event.methodArn, (err: any, res: any) => {
+        let body = event.body ? JSON.parse(event.body) : {};
+
+        let authToken = event.authorizationToken ? event.authorizationToken : body.authorizationToken;
+        let methodArn = event.methodArn ? event.methodArn : body.methodArn;
+
+        this.repo.fetch(authToken, methodArn, (err: any, res: any) => {
             if (err) {
                 return callback(err, null);
+            }
+
+            if (event.httpMethod) {
+                return this.respHandler.done(null, res, callback);
             }
             return callback(null, res);
         });
