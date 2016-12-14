@@ -33,6 +33,9 @@ functions:
   pets:
     handler: build/src/functions/pets/handler.pets
     events:
+      - http: 
+          path: pets/heartbeat
+          method: GET
       - http:
           path: pets
           method: GET
