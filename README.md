@@ -38,7 +38,7 @@ To deploy:
 npm run deploy [-- --stage <stage>]
 ```
 
-### VSCode Debuggin
+### VSCode Debugging
 add the following lines to the .vscode/launch.json file:
 ```json
 "sourceMaps": true,
