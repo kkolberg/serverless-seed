@@ -7,10 +7,29 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "Launch Program",
+            "name": "Debug",
             "program": "${workspaceRoot}/node_modules/serverless/bin/serverless",
             "args": [
                 "offline"
+            ],
+            "preLaunchTask": "pre",
+            "sourceMaps": true,
+            "outDir": "${workspaceRoot}/build",
+            "cwd": "${workspaceRoot}"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Test Debug",
+            "program": "${workspaceRoot}/node_modules/mocha/bin/_mocha",
+           // "preLaunchTask": "pre",
+           
+            "args": [
+                "--debug-brk",
+                "--recursive",
+                "--require",
+                "build/test/index.js",
+                "build/test"
             ],
             "sourceMaps": true,
             "outDir": "${workspaceRoot}/build",
