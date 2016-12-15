@@ -1,0 +1,47 @@
+{
+    // Use IntelliSense to learn about possible Node.js debug attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Debug",
+            "program": "${workspaceRoot}/node_modules/serverless/bin/serverless",
+            "args": [
+                "offline"
+            ],
+            "preLaunchTask": "pre",
+            "sourceMaps": true,
+            "outDir": "${workspaceRoot}/build",
+            "cwd": "${workspaceRoot}"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Test Debug",
+            "program": "${workspaceRoot}/node_modules/mocha/bin/_mocha",
+           // "preLaunchTask": "pre",
+           
+            "args": [
+                "--debug-brk",
+                "--recursive",
+                "--require",
+                "build/test/index.js",
+                "build/test"
+            ],
+            "sourceMaps": true,
+            "outDir": "${workspaceRoot}/build",
+            "cwd": "${workspaceRoot}"
+        },
+        {
+            "type": "node",
+            "request": "attach",
+            "sourceMaps": true,
+            "outDir": "${workspaceRoot}/build",
+            "name": "Attach to Process",
+            "port": 5858
+        }
+    ]
+}
