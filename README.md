@@ -1,4 +1,6 @@
 # serverless-seed
+### Local Setup
+See [Local Setup](https://github.com/gastate/serverless-seed/wiki/Local-Setup)
 
 ### Getting started
 After cloning run the below commands to get everything installed:
