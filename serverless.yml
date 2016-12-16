@@ -10,8 +10,6 @@ provider:
       Resource: "*"
   environment:
     IS_SERVERLESS: true
-    BUCKET: petbucketkksomething
-    GLU_URL: https://d9095b6yh1.execute-api.us-east-1.amazonaws.com/s3/glu
 
 package:
   exclude:
@@ -32,6 +30,9 @@ package:
   
 functions:
   pets:
+    environment:
+      PETS_BUCKET: petbucketkksomething
+      PETS_BUCKET_KEY: petsBucket
     handler: build/src/functions/pets/handler.pets
     events:
       - http: 
@@ -44,6 +45,8 @@ functions:
           path: pets
           method: POST
   auth:
+    environment:
+      GLU_URL: https://d9095b6yh1.execute-api.us-east-1.amazonaws.com/s3/glu
     handler: build/src/functions/auth/handler.auth
     events:
       - http:
