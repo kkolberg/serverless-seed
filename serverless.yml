@@ -9,7 +9,7 @@ provider:
         - s3:*
       Resource: "*"
   environment:
-    IS_SERVERLESS: true
+    IS_SERVERLESS: ${file(deploy.env.yml):IS_SERVERLESS}
 
 package:
   exclude:
@@ -25,14 +25,13 @@ package:
     - sonar-project.properties
     - versioning.js
     - tsconfig.json
-
-
+    - .env
   
 functions:
   pets:
     environment:
-      PETS_BUCKET: petbucketkksomething
-      PETS_BUCKET_KEY: petsBucket
+      PETS_BUCKET: ${file(deploy.env.yml):PETS_BUCKET}
+      PETS_BUCKET_KEY: ${file(deploy.env.yml):PETS_BUCKET_KEY}
     handler: build/src/functions/pets/handler.pets
     events:
       - http: 
@@ -46,7 +45,7 @@ functions:
           method: POST
   auth:
     environment:
-      GLU_URL: https://d9095b6yh1.execute-api.us-east-1.amazonaws.com/s3/glu
+      GLU_URL: ${file(deploy.env.yml):GLU_URL}
     handler: build/src/functions/auth/handler.auth
     events:
       - http:
