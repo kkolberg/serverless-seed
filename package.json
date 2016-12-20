@@ -18,7 +18,7 @@
     "test": "mocha --recursive --require build/test/index.js build/test",
     "pretestdebug": "npm run clean && tsc",
     "testdebug": "mocha --recursive --require build/test/index.js --debug-brk build/test",
-    "prejenkis": "npm run clean && tsc",
+    "prejenkins": "npm run clean && tsc",
     "jenkins": "mocha --recursive --require build/test/index.js --reporter mocha-junit-reporter --reporter-options mochaFile=./testreports/tests-results-jenkins.xml build/test"
   },
   "repository": {
