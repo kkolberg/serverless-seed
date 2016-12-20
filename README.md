@@ -46,3 +46,21 @@ add the following lines to the .vscode/launch.json file:
 "sourceMaps": true,
 "outDir": "${workspaceRoot}/build",
 ```
+
+
+### Importing
+When doing an import, make sure the file path capitalization matches the actual path.
+
+Say you have a file src/shared/lib/responsehandler that you want to import.
+
+Wrong:
+
+```sh
+import { ResponseHandler } from 'src/shared/lib/ResponseHandler';
+```
+
+Correct:
+
+```sh
+import { ResponseHandler } from 'src/shared/lib/responsehandler';
+```
