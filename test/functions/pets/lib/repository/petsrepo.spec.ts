@@ -1,5 +1,5 @@
-import { LocalFileRepo as PetsRepo } from 'src/functions/pets/lib/repository/LocalFileRepo';
-import { Pet } from 'src/functions/pets/model/Pet';
+import { LocalFileRepo as PetsRepo } from 'src/functions/pets/lib/repository/localfilerepo';
+import { Pet } from 'src/functions/pets/model/pet';
 import expect = require('expect.js');
 
 describe('PetsRepo', () => {

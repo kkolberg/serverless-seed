@@ -1,7 +1,7 @@
 import request = require("@types/request");
-import { AuthConfig } from 'src/functions/auth/model/AuthConfig';
-import { IAM } from 'src/functions/auth/model/IAM';
-import { Statement } from 'src/functions/auth/model/Statement';
+import { AuthConfig } from 'src/functions/auth/model/authconfig';
+import { IAM } from 'src/functions/auth/model/iam';
+import { Statement } from 'src/functions/auth/model/statement';
 
 interface GluResponse {
     status: string

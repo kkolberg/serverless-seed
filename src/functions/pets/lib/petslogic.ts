@@ -1,6 +1,6 @@
-import { PetsRepository } from 'src/functions/pets/lib/repository/PetsRepository';
-import { ResponseHandler } from 'src/shared/lib/ResponseHandler';
-import { Pet } from 'src/functions/pets/model/Pet'
+import { PetsRepository } from 'src/functions/pets/lib/repository/petsrepository';
+import { ResponseHandler } from 'src/shared/lib/responsehandler';
+import { Pet } from 'src/functions/pets/model/pet'
 
 export class PetsLogic {
     private repo: PetsRepository;

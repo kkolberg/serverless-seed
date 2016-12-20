@@ -7,10 +7,10 @@ require("app-module-path").addPath("." + path.sep + "build");
 var dotenv = require('dotenv').config({ silent: true });
 
 import request = require("request");
-import { AuthLogic } from 'src/functions/auth/lib/AuthLogic';
-import { ResponseHandler } from 'src/shared/lib/ResponseHandler';
-import { AuthRepository } from 'src/functions/auth/lib/repository/AuthRepository';
-import { AuthConfig } from 'src/functions/auth/model/AuthConfig';
+import { AuthLogic } from 'src/functions/auth/lib/authlogic';
+import { ResponseHandler } from 'src/shared/lib/responsehandler';
+import { AuthRepository } from 'src/functions/auth/lib/repository/authrepository';
+import { AuthConfig } from 'src/functions/auth/model/authconfig';
 
 export function auth(event: any, context: any, callback: Function) {
     let config = new AuthConfig();

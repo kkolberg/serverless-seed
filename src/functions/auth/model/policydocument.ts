@@ -1,4 +1,4 @@
-import { Statement } from 'src/functions/auth/model/Statement'
+import { Statement } from 'src/functions/auth/model/statement'
 export interface PolicyDocument {
     Version: string;
     Statement: Statement[]

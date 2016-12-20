@@ -6,7 +6,7 @@ import path = require("path");
 require("app-module-path").addPath("." + path.sep + "build");
 var dotenv = require('dotenv').config({ silent: true });
 
-import { ResponseHandler } from 'src/shared/lib/ResponseHandler';
+import { ResponseHandler } from 'src/shared/lib/responsehandler';
 
 export function glu(event: any, context: any, callback: Function) {
     let respHandler = new ResponseHandler();

@@ -6,11 +6,11 @@ import path = require("path");
 require("app-module-path").addPath("." + path.sep + "build");
 var dotenv = require('dotenv').config({ silent: true });
 
-import { Pet } from 'src/functions/pets/model/Pet';
-import { PetsLogic } from 'src/functions/pets/lib/PetsLogic';
-import { ResponseHandler } from 'src/shared/lib/ResponseHandler';
-import { RepositoryFactory } from 'src/functions/pets/lib/repository/RepositoryFactory';
-import { PetsConfig } from 'src/functions/pets/model/PetsConfig';
+import { Pet } from 'src/functions/pets/model/pet';
+import { PetsLogic } from 'src/functions/pets/lib/petslogic';
+import { ResponseHandler } from 'src/shared/lib/responsehandler';
+import { RepositoryFactory } from 'src/functions/pets/lib/repository/repositoryfactory';
+import { PetsConfig } from 'src/functions/pets/model/petsconfig';
 
 export function pets(event: any, context: any, callback: Function) {
 

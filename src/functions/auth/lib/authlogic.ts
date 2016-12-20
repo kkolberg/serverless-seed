@@ -1,5 +1,5 @@
-import { AuthRepository } from 'src/functions/auth/lib/repository/AuthRepository';
-import { ResponseHandler } from 'src/shared/lib/ResponseHandler';
+import { AuthRepository } from 'src/functions/auth/lib/repository/authrepository';
+import { ResponseHandler } from 'src/shared/lib/responseHandler';
 
 export class AuthLogic {
     private repo: AuthRepository;

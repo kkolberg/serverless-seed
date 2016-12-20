@@ -1,5 +1,5 @@
-import { PetsRepository } from 'src/functions/pets/lib/repository/PetsRepository';
-import { Pet } from 'src/functions/pets/model/Pet';
+import { PetsRepository } from 'src/functions/pets/lib/repository/petsrepository';
+import { Pet } from 'src/functions/pets/model/pet';
 
 import fs = require('fs');
 var temp = require("temp").track();
