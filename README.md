@@ -51,9 +51,11 @@ To deploy:
 npm run deploy [-- --stage <stage>]
 ```
 
-### VSCode Debugging
+### VSCode Setup
 
-add the following lines to the .vscode/launch.json file:
+for in-line linting help, install the plugin TSLint for Visual Studio Code
+
+for debugging add the following lines to the .vscode/launch.json file:
 
 ```json
 "sourceMaps": true,
