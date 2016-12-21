@@ -1,18 +1,16 @@
-import { AuthRepository } from 'src/functions/auth/lib/repository/authrepository';
-import { ResponseHandler } from 'src/shared/lib/responsehandler';
+import { AuthRepository } from "src/functions/auth/lib/repository/authrepository";
+import { ResponseHandler } from "src/shared/lib/responsehandler";
 
 export class AuthLogic {
     private repo: AuthRepository;
-    private respHandler: ResponseHandler;
 
-    constructor(repo: AuthRepository, respHandler: ResponseHandler) {
+    constructor(repo: AuthRepository) {
         this.repo = repo;
-        this.respHandler = respHandler;
     }
 
     handle(event: any, context: any, callback: Function) {
-        if (event && event.path && event.path.includes('heartbeat')) {
-            return this.respHandler.done(null, { "alive": true }, callback);
+        if (event && event.path && event.path.includes("heartbeat")) {
+            return ResponseHandler.done(null, { "alive": true }, callback);
         }
 
         let body = event.body ? JSON.parse(event.body) : {};
@@ -26,7 +24,7 @@ export class AuthLogic {
             }
 
             if (event.httpMethod) {
-                return this.respHandler.done(null, res, callback);
+                return ResponseHandler.done(null, res, callback);
             }
             return callback(null, res);
         });

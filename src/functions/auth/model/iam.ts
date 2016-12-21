@@ -1,6 +1,6 @@
-import {PolicyDocument} from 'src/functions/auth/model/policydocument'
+import {PolicyDocument} from "src/functions/auth/model/policydocument";
 
-export interface IAM{
+export interface IAM {
     principalId: string;
-    policyDocument:PolicyDocument;
+    policyDocument: PolicyDocument;
 }

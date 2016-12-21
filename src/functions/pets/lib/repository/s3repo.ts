@@ -1,6 +1,6 @@
-import { PetsRepository } from 'src/functions/pets/lib/repository/petsrepository';
-import { Pet } from 'src/functions/pets/model/pet';
-import { PetsConfig } from 'src/functions/pets/model/petsconfig';
+import { PetsRepository } from "src/functions/pets/lib/repository/petsrepository";
+import { Pet } from "src/functions/pets/model/pet";
+import { PetsConfig } from "src/functions/pets/model/petsconfig";
 
 export class S3Repo implements PetsRepository {
     private aws: any;
@@ -26,7 +26,7 @@ export class S3Repo implements PetsRepository {
             Bucket: this.config.s3BucketName,
             Key: this.config.s3BucketKey
         }, (err: any, data: any) => {
-            if (err && err.code === 'NoSuchKey') {
+            if (err && err.code === "NoSuchKey") {
                 this.createKey((err: any) => {
                     if (err) {
                         return callback(err, null);
@@ -50,7 +50,7 @@ export class S3Repo implements PetsRepository {
     }
 
     save(pet: Pet, callback: Function) {
-        var self = this;
+        let self = this;
         let put = function (err: any, pets: Pet[]) {
 
             if (err) {
@@ -69,7 +69,7 @@ export class S3Repo implements PetsRepository {
                 }
                 callback(null, pets);
             });
-        }
+        };
 
         this.fetch(put);
     }

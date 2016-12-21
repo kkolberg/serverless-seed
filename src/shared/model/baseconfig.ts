@@ -6,4 +6,9 @@ export class BaseConfig {
     get isServerlessOffline(): string {
         return process.env.IS_OFFLINE;
     }
+
+    get lifecycle(): string {
+        return process.env.LIFECYCLE;
+    }
+
 }

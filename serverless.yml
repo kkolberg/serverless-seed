@@ -10,6 +10,7 @@ provider:
       Resource: "*"
   environment:
     IS_SERVERLESS: ${file(deploy.env.yml):IS_SERVERLESS}
+    LIFECYCLE: ${file(deploy.env.yml):LIFECYCLE}
 
 package:
   exclude:

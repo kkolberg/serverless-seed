@@ -1,10 +1,10 @@
-import { PetsRepository } from 'src/functions/pets/lib/repository/petsrepository';
-import { Pet } from 'src/functions/pets/model/pet';
+import { PetsRepository } from "src/functions/pets/lib/repository/petsrepository";
+import { Pet } from "src/functions/pets/model/pet";
 
-import fs = require('fs');
-var temp = require("temp").track();
+import fs = require("fs");
+let temp = require("temp").track();
 
-//This is a dummy class design to local dev without having to call s3
+// This is a dummy class design to local dev without having to call s3
 export class LocalFileRepo implements PetsRepository {
 
     type: string = "LocalFileRepo";
@@ -19,7 +19,7 @@ export class LocalFileRepo implements PetsRepository {
     }
 
     fetch(callback: Function) {
-        fs.readFile(this.getFile(), 'utf8', (err: any, data: any) => {
+        fs.readFile(this.getFile(), "utf8", (err: any, data: any) => {
             if (err) {
                 return callback(err, null);
             }
@@ -42,7 +42,7 @@ export class LocalFileRepo implements PetsRepository {
 
             pets.push(pet);
 
-            fs.writeFile(this.getFile(), JSON.stringify(pets), 'utf8', (err: any) => {
+            fs.writeFile(this.getFile(), JSON.stringify(pets), "utf8", (err: any) => {
                 callback(err, pets);
             });
         });

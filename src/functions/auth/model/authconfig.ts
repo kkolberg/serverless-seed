@@ -1,4 +1,4 @@
-import { BaseConfig } from 'src/shared/model/baseconfig';
+import { BaseConfig } from "src/shared/model/baseconfig";
 
 export class AuthConfig extends BaseConfig {
     get gluUrl(): string {

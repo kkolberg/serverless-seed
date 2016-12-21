@@ -1,21 +1,20 @@
-//This is a work around so the test files can find their code once compiled
-//typescript understands that src/* is actually ./src/* due to the baseUrl
-//in the tsconfig file.
-//when compiled the files are actually in ./build/src/*
+// This is a work around so the test files can find their code once compiled
+// typescript understands that src/* is actually ./src/* due to the baseUrl
+// in the tsconfig file.
+// when compiled the files are actually in ./build/src/*
 import path = require("path");
 require("app-module-path").addPath("." + path.sep + "build");
-var dotenv = require('dotenv').config({ silent: true });
+let dotenv = require("dotenv").config({ silent: true });
 
 import request = require("request");
-import { AuthLogic } from 'src/functions/auth/lib/authlogic';
-import { ResponseHandler } from 'src/shared/lib/responsehandler';
-import { AuthRepository } from 'src/functions/auth/lib/repository/authrepository';
-import { AuthConfig } from 'src/functions/auth/model/authconfig';
+import { AuthLogic } from "src/functions/auth/lib/authlogic";
+import { AuthRepository } from "src/functions/auth/lib/repository/authrepository";
+import { AuthConfig } from "src/functions/auth/model/authconfig";
 
 export function auth(event: any, context: any, callback: Function) {
     let config = new AuthConfig();
 
-    let logic = new AuthLogic(new AuthRepository(config, request), new ResponseHandler());
+    let logic = new AuthLogic(new AuthRepository(config, request));
 
     logic.handle(event, context, callback);
 }
