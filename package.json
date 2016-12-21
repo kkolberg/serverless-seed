@@ -20,7 +20,7 @@
     "testdebug": "mocha --recursive --require build/test/index.js --debug-brk build/test",
     "prejenkins": "npm run clean && tsc",
     "jenkins": "mocha --recursive --require build/test/index.js --reporter mocha-junit-reporter --reporter-options mochaFile=./testreports/tests-results-jenkins.xml build/test",
-    "presonar": "npm run cover && node_modules/.bin/remap-istanbul -i coverage/coverage.json -o coverage/lcov -t lcovonly",
+    "presonar": "npm run clear && tsc && istanbul cover --include-all-sources -x '*.jenkins.js' -x 'test/**' node_modules/mocha/bin/_mocha -- -- -u exports -R spec --require build/test/index.js build/test/**/*.js",
     "sonar": "mocha --recursive --require build/test/index.js --reporter mocha-sonar-reporter --reporter-options mochaFile=./testreports/tests-results-sonar.xml build/test"
   },
   "config": {
