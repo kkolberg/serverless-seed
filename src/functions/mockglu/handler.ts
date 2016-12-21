@@ -6,7 +6,7 @@ import path = require("path");
 require("app-module-path").addPath("." + path.sep + "build");
 let dotenv = require("dotenv").config({ silent: true });
 
-import { ResponseHandler } from "src/shared/lib/responsehandler";
+import { ResponseHandler } from "src/shared/lib/responseHandler";
 
 export function glu(event: any, context: any, callback: Function) {
     if (event && event.path && event.path.includes("heartbeat")) {
