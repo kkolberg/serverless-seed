@@ -87,7 +87,7 @@ IS_SERVERLESS=false
 
 Will show up under process.env (which contains all values as strings)
 
-'''js
+```js
 process.env.IS_SERVERLESS === "false"
 ```
 
