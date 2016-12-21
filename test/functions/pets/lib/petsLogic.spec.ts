@@ -20,12 +20,20 @@ describe("PetsLogic", () => {
             }
         };
 
+        let resp = {
+            done(err: any, res: any, call: Function) {
+                call(err, res);
+            }
+        };
+
         let cb = function (err: any, res: any) {
             expect(res.pets.length).to.equal(1);
             expect(res.pets[0].name).to.equal("cat");
+            done();
         };
 
-        let petsLogic = new PetsLogic(repo);
+
+        let petsLogic = new PetsLogic(repo, resp);
         petsLogic.handle({ "httpMethod": "GET" }, {}, cb);
     });
 });

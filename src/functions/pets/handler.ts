@@ -10,10 +10,11 @@ import { Pet } from "src/functions/pets/model/pet";
 import { PetsLogic } from "src/functions/pets/lib/petsLogic";
 import { RepositoryFactory } from "src/functions/pets/lib/repository/repositoryFactory";
 import { PetsConfig } from "src/functions/pets/model/petsConfig";
+import { ResponseHandler } from "src/shared/lib/responseHandler";
 
 export function pets(event: any, context: any, callback: Function) {
-
-  let logic = new PetsLogic(new RepositoryFactory(new PetsConfig()).getRepository());
+  let factory = new RepositoryFactory(new PetsConfig());
+  let logic = new PetsLogic(factory.getRepository(), new ResponseHandler());
 
   logic.handle(event, context, callback);
 }

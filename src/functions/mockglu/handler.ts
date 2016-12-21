@@ -12,16 +12,16 @@ export function glu(event: any, context: any, callback: Function) {
     if (event && event.path && event.path.includes("heartbeat")) {
         return this.respHandler.done(null, { "alive": true }, callback);
     }
-
+    let respHandler = new ResponseHandler();
     let token = JSON.parse(event.body).token;
 
     if (token === "cat") {
-        return ResponseHandler.done(null, {
+        return this.respHandler.done(null, {
             "status": "ALLOWED"
         }, callback);
     }
 
-    return ResponseHandler.done(null, {
+    return this.respHandler.done(null, {
         "status": "DENY"
     }, callback);
 }
