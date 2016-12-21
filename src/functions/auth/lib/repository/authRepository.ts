@@ -1,5 +1,5 @@
 import request = require("@types/request");
-import { AuthConfig } from "src/functions/auth/model/authconfig";
+import { AuthConfig } from "src/functions/auth/model/authConfig";
 import { IAM } from "src/functions/auth/model/iam";
 import { Statement } from "src/functions/auth/model/statement";
 

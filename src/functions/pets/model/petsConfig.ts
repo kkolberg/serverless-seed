@@ -1,4 +1,4 @@
-import { BaseConfig } from "src/shared/model/baseconfig";
+import { BaseConfig } from "src/shared/model/baseConfig";
 
 export class PetsConfig extends BaseConfig {
     get s3BucketName(): string {

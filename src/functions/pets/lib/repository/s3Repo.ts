@@ -1,6 +1,6 @@
-import { PetsRepository } from "src/functions/pets/lib/repository/petsrepository";
+import { PetsRepository } from "src/functions/pets/lib/repository/petsRepository";
 import { Pet } from "src/functions/pets/model/pet";
-import { PetsConfig } from "src/functions/pets/model/petsconfig";
+import { PetsConfig } from "src/functions/pets/model/petsConfig";
 
 export class S3Repo implements PetsRepository {
     private aws: any;

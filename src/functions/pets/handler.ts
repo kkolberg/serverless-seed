@@ -7,9 +7,9 @@ require("app-module-path").addPath("." + path.sep + "build");
 let dotenv = require("dotenv").config({ silent: true });
 
 import { Pet } from "src/functions/pets/model/pet";
-import { PetsLogic } from "src/functions/pets/lib/petslogic";
-import { RepositoryFactory } from "src/functions/pets/lib/repository/repositoryfactory";
-import { PetsConfig } from "src/functions/pets/model/petsconfig";
+import { PetsLogic } from "src/functions/pets/lib/petsLogic";
+import { RepositoryFactory } from "src/functions/pets/lib/repository/repositoryFactory";
+import { PetsConfig } from "src/functions/pets/model/petsConfig";
 
 export function pets(event: any, context: any, callback: Function) {
 

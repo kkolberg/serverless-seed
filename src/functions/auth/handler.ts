@@ -7,9 +7,9 @@ require("app-module-path").addPath("." + path.sep + "build");
 let dotenv = require("dotenv").config({ silent: true });
 
 import request = require("request");
-import { AuthLogic } from "src/functions/auth/lib/authlogic";
-import { AuthRepository } from "src/functions/auth/lib/repository/authrepository";
-import { AuthConfig } from "src/functions/auth/model/authconfig";
+import { AuthLogic } from "src/functions/auth/lib/authLogic";
+import { AuthRepository } from "src/functions/auth/lib/repository/authRepository";
+import { AuthConfig } from "src/functions/auth/model/authConfig";
 
 export function auth(event: any, context: any, callback: Function) {
     let config = new AuthConfig();

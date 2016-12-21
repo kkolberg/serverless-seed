@@ -1,8 +1,8 @@
 import AWS = require("aws-sdk");
-import { PetsRepository } from "src/functions/pets/lib/repository/petsrepository";
-import { LocalFileRepo } from "src/functions/pets/lib/repository/localfilerepo";
-import { S3Repo } from "src/functions/pets/lib/repository/s3repo";
-import { PetsConfig } from "src/functions/pets/model/petsconfig";
+import { PetsRepository } from "src/functions/pets/lib/repository/petsRepository";
+import { LocalFileRepo } from "src/functions/pets/lib/repository/localFileRepo";
+import { S3Repo } from "src/functions/pets/lib/repository/s3Repo";
+import { PetsConfig } from "src/functions/pets/model/petsConfig";
 
 
 // This factory determines what type of repository should be used

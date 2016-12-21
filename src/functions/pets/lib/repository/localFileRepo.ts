@@ -1,4 +1,4 @@
-import { PetsRepository } from "src/functions/pets/lib/repository/petsrepository";
+import { PetsRepository } from "src/functions/pets/lib/repository/petsRepository";
 import { Pet } from "src/functions/pets/model/pet";
 
 import fs = require("fs");

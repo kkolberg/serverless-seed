@@ -1,5 +1,5 @@
 import expect = require("expect.js");
-import { PetsLogic } from "src/functions/pets/lib/petslogic";
+import { PetsLogic } from "src/functions/pets/lib/petsLogic";
 import { Pet } from "src/functions/pets/model/pet";
 
 describe("PetsLogic", () => {
