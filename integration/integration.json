@@ -1,0 +1,45 @@
+{
+	"variables": [],
+	"info": {
+		"name": "petshop",
+		"_postman_id": "2c1910ce-449b-56c4-2bfd-fc242c0c057a",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "petshop heartbeat",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Response time is less than 400ms\"] = responseTime < 400;",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"",
+							"var schema = {",
+							" \"alive\": {",
+							" \"type\": \"boolean\"",
+							" }",
+							"};",
+							"",
+							"tests[\"Valid json\"] = tv4.validate(jsonData, schema);",
+							"console.log(\"Validation failed: \", tv4.error);",
+							"",
+							"tests[\"Heartbeat is alive\"] = jsonData.alive === true;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "https://naq61r2v79.execute-api.us-east-1.amazonaws.com/dev/pets/heartbeat",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
