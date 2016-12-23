@@ -14,7 +14,7 @@
 					"script": {
 						"type": "text/javascript",
 						"exec": [
-							"tests[\"Response time is less than 400ms\"] = responseTime < 1000;",
+							"tests[\"Response time is less than 400ms\"] = responseTime < 400;",
 							"",
 							"var jsonData = JSON.parse(responseBody);",
 							"",
@@ -35,7 +35,13 @@
 			"request": {
 				"url": "https://naq61r2v79.execute-api.us-east-1.amazonaws.com/dev/pets/heartbeat",
 				"method": "GET",
-				"header": [],
+				"header": [
+					{
+						"key": "X-Heartbeat",
+						"value": "beat",
+						"description": ""
+					}
+				],
 				"body": {},
 				"description": ""
 			},
