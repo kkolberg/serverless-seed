@@ -14,8 +14,6 @@
 					"script": {
 						"type": "text/javascript",
 						"exec": [
-							"tests[\"Response time is less than 1000ms\"] = responseTime < 1000;",
-							"",
 							"var jsonData = JSON.parse(responseBody);",
 							"",
 							"var schema = {",
