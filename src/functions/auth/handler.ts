@@ -12,10 +12,19 @@ import { AuthRepository } from "src/functions/auth/lib/repository/authRepository
 import { AuthConfig } from "src/functions/auth/model/authConfig";
 import { ResponseHandler } from "src/shared/lib/responseHandler";
 
+// Initialize outside of scope for efficient re-use
+// see http://blog.rowanudell.com/database-connections-in-lambda/
+let respHandler = new ResponseHandler();
+
+// Heartbeat used to keep Lambda Function from a cold start
+export function heartbeat(event: any, context: any, callback: Function) {
+    return respHandler.done(null, { "alive": true }, callback);
+}
+
 export function auth(event: any, context: any, callback: Function) {
     let config = new AuthConfig();
 
-    let logic = new AuthLogic(new AuthRepository(config, request), new ResponseHandler());
+    let logic = new AuthLogic(new AuthRepository(config, request), respHandler);
 
     logic.handle(event, context, callback);
 }

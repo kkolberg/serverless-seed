@@ -12,9 +12,22 @@ import { RepositoryFactory } from "src/functions/pets/lib/repository/repositoryF
 import { PetsConfig } from "src/functions/pets/model/petsConfig";
 import { ResponseHandler } from "src/shared/lib/responseHandler";
 
-export function pets(event: any, context: any, callback: Function) {
-  let factory = new RepositoryFactory(new PetsConfig());
-  let logic = new PetsLogic(factory.getRepository(), new ResponseHandler());
+// Initialize outside of scope for efficient re-use
+// see http://blog.rowanudell.com/database-connections-in-lambda/
+let config = new PetsConfig();
+let respHandler = new ResponseHandler();
 
-  logic.handle(event, context, callback);
+export function pets(event: any, context: any, callback: Function) {
+    if (event && event.headers && event.headers["X-Heartbeat"]) {
+        return respHandler.done(null, { "alive": true }, callback);
+    }
+
+    if (event && event.headers && event.headers["X-Info"]) {
+        return respHandler.done(null, config.info, callback);
+    }
+
+    let factory = new RepositoryFactory(config);
+    let logic = new PetsLogic(factory.getRepository(), respHandler);
+
+    logic.handle(event, context, callback);
 }

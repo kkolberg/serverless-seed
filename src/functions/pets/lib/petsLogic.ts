@@ -11,12 +11,7 @@ export class PetsLogic {
         this.respHandle = respHandle;
     }
 
-
     handle(event: any, context: any, callback: Function) {
-        if (event && event.path && event.path.includes("heartbeat")) {
-            return this.respHandle.done(null, { "alive": true }, callback);
-        }
-
         switch (event.httpMethod) {
             case "GET":
                 this.repo.fetch((err: any, res: any) => {

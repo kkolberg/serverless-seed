@@ -35,9 +35,6 @@ functions:
       PETS_BUCKET_KEY: ${file(deploy.env.yml):PETS_BUCKET_KEY}
     handler: build/src/functions/pets/handler.pets
     events:
-      - http: 
-          path: pets/heartbeat
-          method: GET
       - http:
           path: pets
           method: GET

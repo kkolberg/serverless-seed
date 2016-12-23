@@ -11,10 +11,6 @@ export class AuthLogic {
     }
 
     handle(event: any, context: any, callback: Function) {
-        if (event && event.path && event.path.includes("heartbeat")) {
-            return this.respHandler.done(null, { "alive": true }, callback);
-        }
-
         let body = event.body ? JSON.parse(event.body) : {};
 
         let authToken = event.authorizationToken ? event.authorizationToken : body.authorizationToken;
