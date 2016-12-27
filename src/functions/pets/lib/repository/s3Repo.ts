@@ -1,4 +1,6 @@
 import { PetsRepository } from "src/functions/pets/lib/repository/petsRepository";
+import { FetchCallback } from "src/functions/pets/lib/repository/petsRepository";
+import { SaveCallback } from "src/functions/pets/lib/repository/petsRepository";
 import { Pet } from "src/functions/pets/model/pet";
 import { PetsConfig } from "src/functions/pets/model/petsConfig";
 
@@ -21,7 +23,7 @@ export class S3Repo implements PetsRepository {
         }, callback);
     }
 
-    fetch(callback: Function) {
+    fetch(callback: FetchCallback) {
         new this.aws.S3().getObject({
             Bucket: this.config.s3BucketName,
             Key: this.config.s3BucketKey
@@ -49,7 +51,7 @@ export class S3Repo implements PetsRepository {
         });
     }
 
-    save(pet: Pet, callback: Function) {
+    save(pet: Pet, callback: SaveCallback) {
         let self = this;
         let put = function (err: any, pets: Pet[]) {
 

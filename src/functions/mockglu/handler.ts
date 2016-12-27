@@ -7,8 +7,9 @@ require("app-module-path").addPath("." + path.sep + "build");
 let dotenv = require("dotenv").config({ silent: true });
 
 import { ResponseHandler } from "src/shared/lib/responseHandler";
+import { NodeCallback } from "src/shared/lib/nodeCallback";
 
-export function glu(event: any, context: any, callback: Function) {
+export function glu(event: any, context: any, callback: NodeCallback) {
     if (event && event.path && event.path.includes("heartbeat")) {
         return this.respHandler.done(null, { "alive": true }, callback);
     }

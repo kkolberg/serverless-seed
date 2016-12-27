@@ -1,5 +1,6 @@
 import { AuthRepository } from "src/functions/auth/lib/repository/authRepository";
 import { ResponseHandler } from "src/shared/lib/responseHandler";
+import { NodeCallback } from "src/shared/lib/nodeCallback";
 
 export class AuthLogic {
     private repo: AuthRepository;
@@ -10,7 +11,7 @@ export class AuthLogic {
         this.respHandler = respHandler;
     }
 
-    handle(event: any, context: any, callback: Function) {
+    handle(event: any, context: any, callback: NodeCallback) {
         let body = event.body ? JSON.parse(event.body) : {};
 
         let authToken = event.authorizationToken ? event.authorizationToken : body.authorizationToken;

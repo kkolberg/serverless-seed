@@ -1,4 +1,6 @@
 import { PetsRepository } from "src/functions/pets/lib/repository/petsRepository";
+import { FetchCallback } from "src/functions/pets/lib/repository/petsRepository";
+import { SaveCallback } from "src/functions/pets/lib/repository/petsRepository";
 import { Pet } from "src/functions/pets/model/pet";
 
 import fs = require("fs");
@@ -18,7 +20,7 @@ export class LocalFileRepo implements PetsRepository {
         return process.env.petsFile;
     }
 
-    fetch(callback: Function) {
+    fetch(callback: FetchCallback) {
         fs.readFile(this.getFile(), "utf8", (err: any, data: any) => {
             if (err) {
                 return callback(err, null);
@@ -33,7 +35,7 @@ export class LocalFileRepo implements PetsRepository {
 
     }
 
-    save(pet: Pet, callback: Function) {
+    save(pet: Pet, callback: SaveCallback) {
 
         this.fetch((err: any, pets: Array<Pet>) => {
             if (err) {

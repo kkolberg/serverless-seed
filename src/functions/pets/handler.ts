@@ -11,13 +11,14 @@ import { PetsLogic } from "src/functions/pets/lib/petsLogic";
 import { RepositoryFactory } from "src/functions/pets/lib/repository/repositoryFactory";
 import { PetsConfig } from "src/functions/pets/model/petsConfig";
 import { ResponseHandler } from "src/shared/lib/responseHandler";
+import { NodeCallback } from "src/shared/lib/nodeCallback";
 
 // Initialize outside of scope for efficient re-use
 // see http://blog.rowanudell.com/database-connections-in-lambda/
 let config = new PetsConfig();
 let respHandler = new ResponseHandler();
 
-export function pets(event: any, context: any, callback: Function) {
+export function pets(event: any, context: any, callback: NodeCallback) {
     if (event && event.headers && event.headers["X-Heartbeat"]) {
         return respHandler.done(null, { "alive": true }, callback);
     }
