@@ -1,4 +1,4 @@
-import expect = require("expect.js");
+import { assert } from "chai";
 import { PetsLogic } from "src/functions/pets/lib/petsLogic";
 import { Pet } from "src/functions/pets/model/pet";
 
@@ -27,8 +27,8 @@ describe("PetsLogic", () => {
         };
 
         let cb = function (err: any, res: any) {
-            expect(res.pets.length).to.equal(1);
-            expect(res.pets[0].name).to.equal("cat");
+            assert.equal(res.pets.length, 1);
+            assert.equal(res.pets[0].name, "cat");
             done();
         };
 
