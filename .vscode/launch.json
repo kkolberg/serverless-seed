@@ -14,7 +14,7 @@
             ],
             "preLaunchTask": "pre",
             "sourceMaps": true,
-            "outDir": "${workspaceRoot}/build",
+            "outFiles": ["${workspaceRoot}/build/**/*.js"],
             "cwd": "${workspaceRoot}"
         },
         {
@@ -22,8 +22,7 @@
             "request": "launch",
             "name": "Test Debug",
             "program": "${workspaceRoot}/node_modules/mocha/bin/_mocha",
-           // "preLaunchTask": "pre",
-           
+            "preLaunchTask": "pre",
             "args": [
                 "--debug-brk",
                 "--recursive",
@@ -32,14 +31,14 @@
                 "build/test"
             ],
             "sourceMaps": true,
-            "outDir": "${workspaceRoot}/build",
+            "outFiles": ["${workspaceRoot}/build/**/*.js"],
             "cwd": "${workspaceRoot}"
         },
         {
             "type": "node",
             "request": "attach",
             "sourceMaps": true,
-            "outDir": "${workspaceRoot}/build",
+            "outFiles": ["${workspaceRoot}/build/**/*.js"],
             "name": "Attach to Process",
             "port": 5858
         }
