@@ -16,14 +16,18 @@ import { NodeCallback } from "src/shared/lib/nodeCallback";
 // Initialize outside of scope for efficient re-use
 // see http://blog.rowanudell.com/database-connections-in-lambda/
 let respHandler = new ResponseHandler();
+let config = new AuthConfig();
 
-// Heartbeat used to keep Lambda Function from a cold start
-export function heartbeat(event: any, context: any, callback: NodeCallback) {
-    return respHandler.done(null, { "alive": true }, callback);
-}
 
 export function auth(event: any, context: any, callback: NodeCallback) {
-    let config = new AuthConfig();
+    if (event && event.headers && event.headers["X-Heartbeat"]) {
+        return respHandler.done(null, { "alive": true }, callback);
+    }
+
+    if (event && event.headers && event.headers["X-Info"]) {
+        return respHandler.done(null, config.info, callback);
+    }
+
 
     let logic = new AuthLogic(new AuthRepository(config, request), respHandler);
 

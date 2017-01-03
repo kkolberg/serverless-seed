@@ -1,4 +1,4 @@
-import request = require("@types/request");
+import request = require("request");
 import { AuthConfig } from "src/functions/auth/model/authConfig";
 import { IAM } from "src/functions/auth/model/iam";
 import { Statement } from "src/functions/auth/model/statement";
@@ -13,12 +13,12 @@ interface GluRequest {
 
 export class AuthRepository {
 
-    private request: request.RequestAPI<request.Request, request.CoreOptions, request.UriOptions>;
+    private http: request.RequestAPI<request.Request, request.CoreOptions, request.UriOptions>;
     private config: AuthConfig;
 
-    constructor(config: AuthConfig, request: request.RequestAPI<request.Request, request.CoreOptions, request.UriOptions>) {
+    constructor(config: AuthConfig, http: request.RequestAPI<request.Request, request.CoreOptions, request.UriOptions>) {
         this.config = config;
-        this.request = request;
+        this.http = request;
     }
 
     // TODO: this is business logic and should be moved out of this layer
@@ -68,7 +68,7 @@ export class AuthRepository {
             callback(null, iam);
         };
 
-        this.request.post(this.config.gluUrl, {
+        this.http.post(this.config.gluUrl, {
             body: JSON.stringify(gluReq)
         }, handleResponse);
     };
