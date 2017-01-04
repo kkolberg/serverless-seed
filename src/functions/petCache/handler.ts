@@ -5,6 +5,7 @@
 import path = require("path");
 require("app-module-path").addPath("." + path.sep + "build");
 let dotenv = require("dotenv").config({ silent: true });
+let dynamodb = require("serverless-dynamodb-client");
 
 import AWS = require("aws-sdk");
 import { ResponseHandler } from "src/shared/lib/responseHandler";
@@ -18,7 +19,8 @@ import { CacheLogic } from "src/functions/petCache/lib/cacheLogic";
 let config = new BaseConfig();
 let respHandler = new ResponseHandler();
 
-const dynamoDb = new AWS.DynamoDB.DocumentClient();
+const dynamoDb = dynamodb.doc;
+
 let cache = new AWSCache(dynamoDb);
 
 export function petCache(event: any, context: any, callback: NodeCallback) {

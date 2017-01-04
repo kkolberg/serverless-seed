@@ -91,5 +91,15 @@ resources:
           WriteCapacityUnits: 1
         TableName: 'pets'
 
+custom:
+  dynamodb:
+    start:
+      port: 8000
+      inMemory: true
+      migration: true
+    migration:
+      dir: ./offline/migrations
+
 plugins:
+  - serverless-dynamodb-local
   - serverless-offline

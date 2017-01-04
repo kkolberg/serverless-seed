@@ -1,0 +1,32 @@
+{
+    "Table": {
+        "TableName": "pets",
+        "KeySchema": [{
+            "AttributeName": "id",
+            "KeyType": "HASH"
+        }],
+        "AttributeDefinitions": [{
+            "AttributeName": "id",
+            "AttributeType": "S"
+        }],
+        "GlobalSecondaryIndexes": [{
+            "IndexName": "global_index_1",
+            "KeySchema": [{
+                "AttributeName": "id",
+                "KeyType": "HASH"
+            }],
+            "Projection": {
+                "NonKeyAttributes": ["id"],
+                "ProjectionType": "INCLUDE"
+            },
+            "ProvisionedThroughput": {
+                "ReadCapacityUnits": 1,
+                "WriteCapacityUnits": 1
+            }
+        }],
+        "ProvisionedThroughput": {
+            "ReadCapacityUnits": 1,
+            "WriteCapacityUnits": 1
+        }
+    }
+}
