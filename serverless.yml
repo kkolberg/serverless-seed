@@ -28,7 +28,7 @@ package:
     - versioning.js
     - tsconfig.json
     - .env
-  
+
 functions:
   pets:
     environment:
@@ -72,6 +72,13 @@ functions:
           path: petCache
           method: POST
 
+  petImages:
+    handler: build/src/functions/petImages/handler.petImages
+    events:
+      - http:
+          path: petImages
+          method: GET
+
 resources:
   Resources:
     PetCacheDynamoDbTable:
@@ -90,6 +97,7 @@ resources:
           ReadCapacityUnits: 1
           WriteCapacityUnits: 1
         TableName: 'pets'
+
 
 custom:
   dynamodb:
