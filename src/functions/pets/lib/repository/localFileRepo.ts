@@ -1,6 +1,4 @@
-import { PetsRepository } from "src/functions/pets/lib/repository/petsRepository";
-import { FetchCallback } from "src/functions/pets/lib/repository/petsRepository";
-import { SaveCallback } from "src/functions/pets/lib/repository/petsRepository";
+import { PetsRepository, SaveCallback, FetchCallback } from "src/functions/pets/lib/repository/petsRepository";
 import { Pet } from "src/functions/pets/model/pet";
 
 import fs = require("fs");

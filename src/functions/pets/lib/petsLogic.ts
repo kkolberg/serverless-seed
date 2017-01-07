@@ -1,6 +1,4 @@
-import { PetsRepository } from "src/functions/pets/lib/repository/petsRepository";
-import { FetchCallback } from "src/functions/pets/lib/repository/petsRepository";
-import { SaveCallback } from "src/functions/pets/lib/repository/petsRepository";
+import { PetsRepository, FetchCallback, SaveCallback } from "src/functions/pets/lib/repository/petsRepository";
 import { ResponseHandler } from "src/shared/lib/responseHandler";
 import { Pet } from "src/functions/pets/model/pet";
 import { NodeCallback } from "src/shared/lib/nodeCallback";

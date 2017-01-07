@@ -1,8 +1,6 @@
 import AWS = require("aws-sdk");
-import { Cache } from "src/functions/petCache/lib/repository/cache";
+import { Cache, PutCallback, ListCallback } from "src/functions/petCache/lib/repository/cache";
 import { Pet } from "src/functions/petCache/model/pet";
-import { PutCallback } from "src/functions/petCache/lib/repository/cache";
-import { ListCallback } from "src/functions/petCache/lib/repository/cache";
 const uuid = require("uuid");
 
 export class AWSCache implements Cache {

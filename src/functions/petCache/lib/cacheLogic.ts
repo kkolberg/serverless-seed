@@ -1,9 +1,7 @@
 import { ResponseHandler } from "src/shared/lib/responseHandler";
 import { NodeCallback } from "src/shared/lib/nodeCallback";
-import { Cache } from "src/functions/petCache/lib/repository/cache";
 import { Pet } from "src/functions/petCache/model/pet";
-import { PutCallback } from "src/functions/petCache/lib/repository/cache";
-import { ListCallback } from "src/functions/petCache/lib/repository/cache";
+import { Cache, PutCallback, ListCallback } from "src/functions/petCache/lib/repository/cache";
 
 export class CacheLogic {
     private cache: Cache;
