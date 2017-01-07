@@ -25,7 +25,7 @@ let myConfig = new AWS.Config({
     region: "us-east-1"
 });
 
-let s3 = new AWS.S3({ signatureVersion: "v4" });
+let s3 = new AWS.S3({ signatureVersion: "v4", credentials: myCredentials });
 
 export function petImages(event: any, context: any, callback: NodeCallback) {
     if (event && event.headers && event.headers["X-Heartbeat"]) {
