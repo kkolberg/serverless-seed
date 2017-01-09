@@ -36,8 +36,8 @@ describe("PetsConfig", () => {
             let info = config.info;
             assert.isNotNull(info);
 
-            assert.equal(config.s3BucketName, info["s3BucketName"]);
-            assert.equal(config.s3BucketKey, info["s3BucketKey"]);
+            assert.equal(info["s3BucketName"], config.s3BucketName);
+            assert.equal(info["s3BucketKey"], config.s3BucketKey);
         });
 
         it("it should work with json.stringify", () => {

@@ -20,7 +20,7 @@ describe("AWSCache", () => {
             };
             let cache = new AWSCache(db);
             let pet = <Pet>{};
-            cache.put(pet, <PutCallback>(err: any) => {
+            cache.put(pet, (err) => {
                 assert.isNull(err);
             });
         });
@@ -84,14 +84,14 @@ describe("AWSCache", () => {
                 }
             };
             let cache = new AWSCache(db);
-            cache.list(<ListCallback>(err: any, pets: Pet[]) => {
+            cache.list((err, pets) => {
                 assert.isNotNull(err);
                 assert.isNull(pets);
             });
         });
 
         it("should fetch", () => {
-            let pet = <Pet>{
+            let pet: Pet = {
                 name: "pname",
                 weight: 100,
                 price: 1.2
@@ -105,7 +105,7 @@ describe("AWSCache", () => {
             };
             let cache = new AWSCache(db);
 
-            cache.list(<ListCallback>(err: any, pets: Pet[]) => {
+            cache.list((err, pets) => {
                 assert.isNull(err);
                 assert.isNotNull(pets);
                 assert.isArray(pets);

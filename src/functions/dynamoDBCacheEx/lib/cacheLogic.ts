@@ -13,20 +13,20 @@ export class CacheLogic {
     }
 
     handle(event: any, context: any, callback: NodeCallback) {
-        let pet = <Pet>{
+        let pet: Pet = {
             name: "cat",
             price: 1,
             weight: 100
         };
 
-        this.cache.put(pet, <PutCallback>(err: any) => {
+        this.cache.put(pet, (err) => {
             if (err) {
                 return this.respHandler.done(err, null, callback);
             }
 
             // return this.respHandler.done(null, null, callback);
 
-            this.cache.list(<ListCallback>(err: any, pets: Pet[]) => {
+            this.cache.list((err, pets) => {
                 if (err) {
                     return this.respHandler.done(err, null, callback);
                 }

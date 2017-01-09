@@ -32,7 +32,7 @@ export class PetsLogic {
     }
 
     private fetchPets(callback: NodeCallback) {
-        let fetchCallback = <FetchCallback>(err: any, res: any) => {
+        let fetchCallback: FetchCallback = (err, res) => {
             this.respHandle.done(null,
                 {
                     "pets": res,
@@ -43,9 +43,11 @@ export class PetsLogic {
     }
 
     private savePet(event: any, callback: NodeCallback) {
-        let pet = <Pet>JSON.parse(event.body);
-
-        let saveCallback = <SaveCallback>(err: any, res: Array<Pet>) => {
+        let pet: Pet = JSON.parse(event.body);
+        let saveCallback: SaveCallback = (err, res) => {
+            if (err) {
+                return callback(err, null);
+            }
             this.respHandle.done(err,
                 {
                     "pets": res,
