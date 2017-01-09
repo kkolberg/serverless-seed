@@ -1,8 +1,6 @@
-import { PetsRepository } from "src/functions/pets/lib/repository/petsRepository";
-import { FetchCallback } from "src/functions/pets/lib/repository/petsRepository";
-import { SaveCallback } from "src/functions/pets/lib/repository/petsRepository";
-import { Pet } from "src/functions/pets/model/pet";
-import { PetsConfig } from "src/functions/pets/model/petsConfig";
+import { PetsRepository, FetchCallback, SaveCallback } from "src/functions/storageEx/lib/repository/petsRepository";
+import { Pet } from "src/functions/storageEx/model/pet";
+import { PetsConfig } from "src/functions/storageEx/model/petsConfig";
 
 export class S3Repo implements PetsRepository {
     private aws: any;

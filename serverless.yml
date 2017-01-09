@@ -7,6 +7,7 @@ provider:
     - Effect: Allow
       Action:
         - s3:*
+        - dynamodb:*
       Resource: "*"
   environment:
     IS_SERVERLESS: ${file(deploy.env.yml):IS_SERVERLESS}
@@ -27,7 +28,7 @@ package:
     - versioning.js
     - tsconfig.json
     - .env
-  
+
 functions:
   pets:
     environment:
@@ -61,6 +62,52 @@ functions:
       - http:
           path: glu
           method: POST
+  petCache:
+    handler: build/src/functions/petCache/handler.petCache
+    events:
+      - http:
+          path: petCache
+          method: GET
+      - http:
+          path: petCache
+          method: POST
+
+  petImages:
+    handler: build/src/functions/petImages/handler.petImages
+    events:
+      - http:
+          path: petImages
+          method: GET
+
+resources:
+  Resources:
+    PetCacheDynamoDbTable:
+      Type: 'AWS::DynamoDB::Table'
+      DeletionPolicy: Retain
+      Properties:
+        AttributeDefinitions:
+          -
+            AttributeName: id
+            AttributeType: S
+        KeySchema:
+          -
+            AttributeName: id
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+        TableName: 'pets'
+
+
+custom:
+  dynamodb:
+    start:
+      port: 8000
+      inMemory: true
+      migration: true
+    migration:
+      dir: ./offline/migrations
 
 plugins:
+  - serverless-dynamodb-local
   - serverless-offline

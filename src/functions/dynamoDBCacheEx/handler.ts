@@ -5,20 +5,25 @@
 import path = require("path");
 require("app-module-path").addPath("." + path.sep + "build");
 let dotenv = require("dotenv").config({ silent: true });
+let dynamodb = require("serverless-dynamodb-client");
 
-import { Pet } from "src/functions/pets/model/pet";
-import { PetsLogic } from "src/functions/pets/lib/petsLogic";
-import { RepositoryFactory } from "src/functions/pets/lib/repository/repositoryFactory";
-import { PetsConfig } from "src/functions/pets/model/petsConfig";
+import AWS = require("aws-sdk");
 import { ResponseHandler } from "src/shared/lib/responseHandler";
 import { NodeCallback } from "src/shared/lib/nodeCallback";
+import { BaseConfig } from "src/shared/model/baseConfig";
+import { AWSCache } from "src/functions/dynamoDBCacheEx/lib/repository/awsCache";
+import { CacheLogic } from "src/functions/dynamoDBCacheEx/lib/cacheLogic";
 
 // Initialize outside of scope for efficient re-use
 // see http://blog.rowanudell.com/database-connections-in-lambda/
-let config = new PetsConfig();
+let config = new BaseConfig();
 let respHandler = new ResponseHandler();
 
-export function pets(event: any, context: any, callback: NodeCallback) {
+const dynamoDb = dynamodb.doc;
+
+let cache = new AWSCache(dynamoDb);
+
+export function dynamoDBCache(event: any, context: any, callback: NodeCallback) {
     if (event && event.headers && event.headers["X-Heartbeat"]) {
         return respHandler.done(null, { "alive": true }, callback);
     }
@@ -27,8 +32,6 @@ export function pets(event: any, context: any, callback: NodeCallback) {
         return respHandler.done(null, config.info, callback);
     }
 
-    let factory = new RepositoryFactory(config);
-    let logic = new PetsLogic(factory.getRepository(), respHandler);
-
+    let logic = new CacheLogic(respHandler, cache);
     logic.handle(event, context, callback);
 }

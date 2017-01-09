@@ -1,4 +1,4 @@
-import { Pet } from "src/functions/pets/model/pet";
+import { Pet } from "src/functions/storageEx/model/pet";
 
 export interface PetsRepository {
     type: string;

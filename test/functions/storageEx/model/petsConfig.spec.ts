@@ -1,5 +1,5 @@
 import { assert } from "chai";
-import { PetsConfig } from "src/functions/pets/model/petsConfig";
+import { PetsConfig } from "src/functions/storageEx/model/petsConfig";
 
 describe("PetsConfig", () => {
     before(function () {

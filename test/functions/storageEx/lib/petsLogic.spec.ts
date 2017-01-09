@@ -1,6 +1,6 @@
 import { assert } from "chai";
-import { PetsLogic } from "src/functions/pets/lib/petsLogic";
-import { Pet } from "src/functions/pets/model/pet";
+import { PetsLogic } from "src/functions/storageEx/lib/petsLogic";
+import { Pet } from "src/functions/storageEx/model/pet";
 
 describe("PetsLogic", () => {
     it("should call fetch", (done) => {

@@ -114,3 +114,18 @@ And reference in serverless.yml
 environment:
     IS_SERVERLESS: ${file(deploy.env.yml):IS_SERVERLESS}
 ```
+
+
+### DynamoDB
+
+To use dynamodb locally first run the below command
+
+```sh
+sls dynamodb install
+```
+
+Then run the following in a seperate terminal before starting serverless
+
+```sh
+sls dynamodb start
+```
