@@ -17,7 +17,7 @@ export class RepositoryFactory {
 
     getRepository(): PetsRepository {
         if (this.config.isServerless === "true") {
-            return new S3Repo(this.config, AWS);
+            return new S3Repo(this.config, new AWS.S3());
         }
 
         return new LocalFileRepo();
