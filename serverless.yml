@@ -34,7 +34,7 @@ functions:
     environment:
       PETS_BUCKET: ${file(deploy.env.yml):PETS_BUCKET}
       PETS_BUCKET_KEY: ${file(deploy.env.yml):PETS_BUCKET_KEY}
-    handler: build/src/functions/pets/handler.pets
+    handler: build/src/functions/storageEx/handler.pets
     events:
       - http:
           path: pets
@@ -63,7 +63,7 @@ functions:
           path: glu
           method: POST
   petCache:
-    handler: build/src/functions/petCache/handler.petCache
+    handler: build/src/functions/dynamoDBCacheEx/handler.petCache
     events:
       - http:
           path: petCache
@@ -73,7 +73,7 @@ functions:
           method: POST
 
   petImages:
-    handler: build/src/functions/petImages/handler.petImages
+    handler: build/src/functions/imageSignEx/handler.petImages
     events:
       - http:
           path: petImages
@@ -96,7 +96,7 @@ resources:
         ProvisionedThroughput:
           ReadCapacityUnits: 1
           WriteCapacityUnits: 1
-        TableName: pets${opt:stage}
+        TableName: pets-${opt:stage}
 
 
 custom:
