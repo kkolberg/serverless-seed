@@ -31,7 +31,7 @@
 				}
 			],
 			"request": {
-				"url": "https://naq61r2v79.execute-api.us-east-1.amazonaws.com/dev/pets",
+				"url": "https://kkw130dtk4.execute-api.us-east-1.amazonaws.com/dev/pets",
 				"method": "GET",
 				"header": [
 					{
