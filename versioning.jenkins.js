@@ -7,6 +7,10 @@ module.exports.version = function () {
     if (mode !== 'production') {
         return '';
     }
+    
+    if (version) {
+        version = version.replace(/\./g, '-');
+    }
 
     return '-v' + version;
 };
