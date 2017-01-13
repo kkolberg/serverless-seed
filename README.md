@@ -129,3 +129,5 @@ Then run the following in a seperate terminal before starting serverless
 ```sh
 sls dynamodb start
 ```
+
+Don't forget to stop dynamodb or kill the shell it is running in, when finished.
