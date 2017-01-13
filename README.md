@@ -1,5 +1,6 @@
 # serverless-seed
 
+
 ### Local Setup
 
 See [Local Setup](https://github.com/gastate/serverless-seed/wiki/Local-Setup)
